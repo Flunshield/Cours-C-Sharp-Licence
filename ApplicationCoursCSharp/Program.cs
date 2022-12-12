@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationCoursCSharp
+namespace ApplicationConsoleCSharp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World !");
+            short s = 257;
+            byte b = (byte)s;
+            Console.WriteLine(b);
             Console.ReadLine();
         }
     }

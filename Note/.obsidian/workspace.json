@@ -1,0 +1,160 @@
+{
+  "main": {
+    "id": "96c084851f9b8335",
+    "type": "split",
+    "children": [
+      {
+        "id": "57cb8fd75e9566df",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "36dbe08bc165d1d2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 - C#.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "38435ef3367bb6bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2 - Réponse aux Questions.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7cde877e9df6c8fd",
+    "type": "split",
+    "children": [
+      {
+        "id": "0803d8479789b1cb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d69060adec54c6dd",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b3c0954805e0c04b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "1248bf31a45ce427",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "53bee57535eb1724",
+    "type": "split",
+    "children": [
+      {
+        "id": "352d45f1e378895d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0b298df13a3bee55",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "1 - C#.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "008943830cd04f9b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "1 - C#.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f94867a2b559cca1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "03f92ff0339a57b3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "1 - C#.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "36dbe08bc165d1d2",
+  "lastOpenFiles": [
+    "2 - Réponse aux Questions.md",
+    "1 - C#.md",
+    "Pasted image 20221211161135.png.md",
+    "Pasted image 20221211161101.png",
+    "Pasted image 20221211160152.png",
+    "Pasted image 20221211160109.png"
+  ]
+}
