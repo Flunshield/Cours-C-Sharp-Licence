@@ -1,0 +1,8 @@
+C:\Users\pigge\OneDrive\Documents\ISITECH\C#\CSharp\ApplicationCoursCSharp\bin\Release\ApplicationCoursCSharp.exe.config
+C:\Users\pigge\OneDrive\Documents\ISITECH\C#\CSharp\ApplicationCoursCSharp\bin\Release\ApplicationCoursCSharp.exe
+C:\Users\pigge\OneDrive\Documents\ISITECH\C#\CSharp\ApplicationCoursCSharp\bin\Release\ApplicationCoursCSharp.pdb
+C:\Users\pigge\OneDrive\Documents\ISITECH\C#\CSharp\ApplicationCoursCSharp\obj\Release\ApplicationConsoleCSharp.csproj.AssemblyReference.cache
+C:\Users\pigge\OneDrive\Documents\ISITECH\C#\CSharp\ApplicationCoursCSharp\obj\Release\ApplicationConsoleCSharp.csproj.SuggestedBindingRedirects.cache
+C:\Users\pigge\OneDrive\Documents\ISITECH\C#\CSharp\ApplicationCoursCSharp\obj\Release\ApplicationConsoleCSharp.csproj.CoreCompileInputs.cache
+C:\Users\pigge\OneDrive\Documents\ISITECH\C#\CSharp\ApplicationCoursCSharp\obj\Release\ApplicationCoursCSharp.exe
+C:\Users\pigge\OneDrive\Documents\ISITECH\C#\CSharp\ApplicationCoursCSharp\obj\Release\ApplicationCoursCSharp.pdb
