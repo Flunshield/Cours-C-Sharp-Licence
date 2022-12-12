@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ApplicationCoursCSharp
 {
-    internal class Menu
+    internal class justePrix
     {
+
     }
 }
