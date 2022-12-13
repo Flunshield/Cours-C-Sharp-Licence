@@ -15,10 +15,11 @@ namespace ApplicationConsoleCSharp
         {
             Console.Clear();
             int finishProgram = 0;
-            Players highScrore;
+            Players newPlayer = new Players();
 
             while (finishProgram == 0)
             {
+                Console.Clear();
                 Console.WriteLine("****************************************************************");
                 Console.WriteLine("*                        DASHBOARD                             *");
                 Console.WriteLine("****************************************************************");
@@ -29,7 +30,6 @@ namespace ApplicationConsoleCSharp
                 Console.WriteLine("*              Choice 3 : High Score                           *");
                 Console.WriteLine("*              Choice 4 : Quit the application                 *");
                 Console.WriteLine("****************************************************************");
-                Console.WriteLine("                                                                ");
                 Console.WriteLine("                                                                ");
                 Console.WriteLine("What is your choice?");
                 int choice = (int.Parse(Console.ReadLine()));
@@ -43,19 +43,20 @@ namespace ApplicationConsoleCSharp
 
                     case 2:
                         Console.Clear();
-                        var player = newGame.StoneLeafScissors();
+                        newGame.StoneLeafScissors();
                         break;
 
                     case 3:
                         //Not completed and not functional
                         Console.Clear();
+                        newPlayer.ReadPlayer();
                         Console.ReadLine();
                         break;
 
                     case 4:
                         finishProgram = 1;
                         Console.WriteLine("Thanks for playing and see you soon !");
-                        Console.ReadLine();
+                        
                         break;
 
                     default:

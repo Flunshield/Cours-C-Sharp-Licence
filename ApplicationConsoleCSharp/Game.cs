@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ApplicationConsoleCSharp
 {
     public class Game
     {
         Players newPlayer = new Players();
-        public Players StoneLeafScissors()
+        public void StoneLeafScissors()
         {
             var rand = new Random();
             int party = 0;
             int nbGameWin = 0;
-            string game = "Stone/Sheet/Scissors";
+            string game = "*** Stone/Sheet/Scissors ***";
 
             Console.WriteLine("******************************************************************************");
             Console.WriteLine("*                   Stone/Sheet/Scissors                                     *");
@@ -43,58 +44,84 @@ namespace ApplicationConsoleCSharp
                 Console.WriteLine("");
                 if (choiceNumber == randomNumber)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Console.WriteLine(" Equality ! ");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("");
                 }
                 if (choiceNumber == 0 && randomNumber == 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(" You lost ! The computer did Scissors !");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("");
                 }
                 if (choiceNumber == 0 && randomNumber == 2)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(" You Win ! ");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("");
                     nbGameWin++;
                 }
                 if (choiceNumber == 1 && randomNumber == 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(" You Win ! ");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("");
                     nbGameWin++;
                 }
                 if (choiceNumber == 1 && randomNumber == 2)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(" You lost  The computer did Scissors !");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("");
                 }
                 if (choiceNumber == 2 && randomNumber == 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(" You Win ! ");
-                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.White;
                     nbGameWin++;
                 }
                 if (choiceNumber == 2 && randomNumber == 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(" You lost  The computer did Stone !");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("");
                 }
                 party++;
             }
 
+            if (nbGameWin >= 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("You win this game ! " + nbGameWin + "/3");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You lost this game ! " + nbGameWin + "/3");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
             var player = new Players(name, game, nbGameWin);
             newPlayer.AddPlayer(player);
             Console.WriteLine("");
-            return player;
+            Console.WriteLine("Press enter to exit");
+            Console.ReadLine();
         }
 
-        public Players RightPrice()
+        public void RightPrice()
         {
             var rand = new Random();
             int randomNumber = rand.Next(101);
             int finishProgram = 0;
             int tentative = 1;
-            string game = "The right price";
+            string game = "*** The right price ***";
             Console.WriteLine("***********************************************************************");
             Console.WriteLine("*                     The right price                                 *");
             Console.WriteLine("***********************************************************************");
@@ -102,7 +129,6 @@ namespace ApplicationConsoleCSharp
             Console.WriteLine("***********************************************************************");
             Console.WriteLine("* Rule number 1: Find the price thou shalt.                           *");
             Console.WriteLine("* Rule number 2: You will only be allowed a maximum of 10 attempts.   *");
-            Console.WriteLine("* Rule number 3: Your time will be counted                            *");
             Console.WriteLine("* Rule number 4: Be brave!                                            *");
             Console.WriteLine("***********************************************************************");
             Console.WriteLine("                                                                       ");
@@ -116,7 +142,9 @@ namespace ApplicationConsoleCSharp
                 int choixNumber = (int.Parse(Console.ReadLine()));
                 if (choixNumber == randomNumber)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Congratulations, you have found the price in " + tentative + " attempts !");
+                    Console.ForegroundColor = ConsoleColor.White;
                     finishProgram = 1;
                 }
                 if (choixNumber < randomNumber)
@@ -133,13 +161,17 @@ namespace ApplicationConsoleCSharp
             }
             if (tentative == 11)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You lost !");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("");
             }
+            tentative = 110 - (tentative * 10);
             var player = new Players(name, game, tentative);
             newPlayer.AddPlayer(player);
             Console.WriteLine("");
-            return player;
+            Console.WriteLine("Press enter to exit");
+            Console.ReadLine();
         }
     }
 }

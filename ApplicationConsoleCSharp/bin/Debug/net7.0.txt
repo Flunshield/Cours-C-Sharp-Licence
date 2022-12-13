@@ -1,3 +1,12 @@
-jul The right price 11
-jul Stone/Sheet/Scissors 2
-kil Stone/Sheet/Scissors 1
+jul *** Stone/Sheet/Scissors *** 0
+kil *** Stone/Sheet/Scissors *** 0
+julien *** The right price *** 9
+0 *** Stone/Sheet/Scissors *** 0
+kamehameha *** Stone/Sheet/Scissors *** 2
+hug *** The right price *** 8
+test *** The right price *** 11
+coucou *** Stone/Sheet/Scissors *** 0
+kesjfvnkxejnf *** Stone/Sheet/Scissors *** 1
+juju *** Stone/Sheet/Scissors *** 1
+haha *** The right price *** 5
+dvxe *** The right price *** 20

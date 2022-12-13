@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
+using System.IO;
 
 namespace ApplicationConsoleCSharp
 {
@@ -43,11 +44,33 @@ namespace ApplicationConsoleCSharp
         }
         public void ReadPlayer()
         {
-            foreach (var player in players)
+            String highScore;
+            Console.WriteLine("******************************************************************************");
+            Console.WriteLine("*                              HIGH SCORE                                    *");
+            Console.WriteLine("******************************************************************************");
+            Console.WriteLine("*                          Name *** Game *** Score                           *");
+            Console.WriteLine("******************************************************************************");
+            try
             {
-                Console.WriteLine("Hello " + player.playerName + " your game is : " + player.playerGame + " and your scrore is : " + player.playerScore);
+                var CurrentDirectory = Directory.GetCurrentDirectory();
+                StreamReader reader = new StreamReader(CurrentDirectory + ".txt");
+                highScore = reader.ReadLine();
+                while (highScore != null)
+                {
+                    Console.WriteLine("*                       " + highScore);
+                    highScore = reader.ReadLine();
+                }
 
+                Console.WriteLine("******************************************************************************");
+                reader.Close();
+                Console.WriteLine("");
+                Console.WriteLine("Press enter to exit");
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+
         }
     }
 }
