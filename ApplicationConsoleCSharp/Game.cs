@@ -93,7 +93,7 @@ namespace ApplicationConsoleCSharp
             var rand = new Random();
             int randomNumber = rand.Next(101);
             int finishProgram = 0;
-            int tentative = 0;
+            int tentative = 1;
             string game = "The right price";
             Console.WriteLine("***********************************************************************");
             Console.WriteLine("*                     The right price                                 *");

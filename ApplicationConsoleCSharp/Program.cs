@@ -47,6 +47,7 @@ namespace ApplicationConsoleCSharp
                         break;
 
                     case 3:
+                        //Not completed and not functional
                         Console.Clear();
                         Console.ReadLine();
                         break;
