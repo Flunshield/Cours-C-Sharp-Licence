@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "89oWmdVqJQah6SP7JN79DmahtHJkMn1mbDF73xGcE82FD5zvyQresC/DAh9zLxXFpbH1WyfOp11U/QGc8iIyvw==",
+  "dgSpecHash": "HLZGw6R0x4BlAy1KHm9QN8y3DzQg7I72FhZSnxkCetl1AW3qziZSKQX14aYYyqCCV7/pRljoNTpOJuosBGKHvg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pigge\\Documents\\ISITECH\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj",
+  "projectFilePath": "C:\\Users\\pigge\\OneDrive\\Documents\\ISITECH\\C#\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pigge\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\pigge\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0\\microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",

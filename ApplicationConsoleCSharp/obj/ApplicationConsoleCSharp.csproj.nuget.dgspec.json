@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pigge\\Documents\\ISITECH\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj": {}
+    "C:\\Users\\pigge\\OneDrive\\Documents\\ISITECH\\C#\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pigge\\Documents\\ISITECH\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj": {
+    "C:\\Users\\pigge\\OneDrive\\Documents\\ISITECH\\C#\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pigge\\Documents\\ISITECH\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj",
+        "projectUniqueName": "C:\\Users\\pigge\\OneDrive\\Documents\\ISITECH\\C#\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj",
         "projectName": "ApplicationConsoleCSharp",
-        "projectPath": "C:\\Users\\pigge\\Documents\\ISITECH\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj",
+        "projectPath": "C:\\Users\\pigge\\OneDrive\\Documents\\ISITECH\\C#\\CSharp\\ApplicationConsoleCSharp\\ApplicationConsoleCSharp.csproj",
         "packagesPath": "C:\\Users\\pigge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pigge\\Documents\\ISITECH\\CSharp\\ApplicationConsoleCSharp\\obj\\",
+        "outputPath": "C:\\Users\\pigge\\OneDrive\\Documents\\ISITECH\\C#\\CSharp\\ApplicationConsoleCSharp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
