@@ -1,52 +1,35 @@
 {
   "main": {
-    "id": "96c084851f9b8335",
+    "id": "d35f26fa24c7735b",
     "type": "split",
     "children": [
       {
-        "id": "57cb8fd75e9566df",
+        "id": "93a29199e5b2ac06",
         "type": "tabs",
         "children": [
           {
-            "id": "36dbe08bc165d1d2",
+            "id": "7cf5786e8b6c1b26",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 - C#.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "38435ef3367bb6bd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2 - Réponse aux Questions.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "7cde877e9df6c8fd",
+    "id": "13946ea82ef39d04",
     "type": "split",
     "children": [
       {
-        "id": "0803d8479789b1cb",
+        "id": "e289cee2961fdf64",
         "type": "tabs",
         "children": [
           {
-            "id": "d69060adec54c6dd",
+            "id": "e5372c8d62282902",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -56,7 +39,7 @@
             }
           },
           {
-            "id": "b3c0954805e0c04b",
+            "id": "2c766bfddf7b5a66",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -71,7 +54,7 @@
             }
           },
           {
-            "id": "1248bf31a45ce427",
+            "id": "369215d66c5f5d9d",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -85,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "53bee57535eb1724",
+    "id": "1dff1e3b20745fca",
     "type": "split",
     "children": [
       {
-        "id": "352d45f1e378895d",
+        "id": "d12bb129e09f11e6",
         "type": "tabs",
         "children": [
           {
-            "id": "0b298df13a3bee55",
+            "id": "0251a3ea28bec4d7",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2 - Réponse aux Questions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,19 +92,18 @@
             }
           },
           {
-            "id": "008943830cd04f9b",
+            "id": "adeedfcb17fa5813",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2 - Réponse aux Questions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "f94867a2b559cca1",
+            "id": "c1c8ea2e0850db56",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -133,13 +114,11 @@
             }
           },
           {
-            "id": "03f92ff0339a57b3",
+            "id": "d94a9a9bb47f8e41",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2 - Réponse aux Questions.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -149,13 +128,6 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "38435ef3367bb6bd",
-  "lastOpenFiles": [
-    "1 - C#.md",
-    "2 - Réponse aux Questions.md",
-    "Pasted image 20221211161135.png.md",
-    "Pasted image 20221211161101.png",
-    "Pasted image 20221211160152.png",
-    "Pasted image 20221211160109.png"
-  ]
+  "active": "7cf5786e8b6c1b26",
+  "lastOpenFiles": []
 }

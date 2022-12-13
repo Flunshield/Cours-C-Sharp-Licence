@@ -63,4 +63,6 @@ Que signifie le terme "assembly" (assemblage) ?
 ## Question 5
 Citez un exemple reel d'un usage pertinent du mot clef **Private**.
 
+Nous devons utiliser le mot-clef **Private** dans le cas où notre classe pourrait interagir avec une base de donnée. Cela permettra d'éviter d'utiliser la classe à l'extérieur de son périmètre.
 
+Exemple de classe : Une classe qui gère l'ajout et le retrait d'argent sur nos comptes.
