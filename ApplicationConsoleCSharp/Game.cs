@@ -120,7 +120,7 @@ namespace ApplicationConsoleCSharp
             var rand = new Random();
             int randomNumber = rand.Next(101);
             int finishProgram = 0;
-            int tentative = 1;
+            int attempt = 1;
             string game = "*** The right price ***";
             Console.WriteLine("***********************************************************************");
             Console.WriteLine("*                     The right price                                 *");
@@ -137,13 +137,13 @@ namespace ApplicationConsoleCSharp
             string name = Console.ReadLine();
             Console.WriteLine("");
             Console.WriteLine("The price is between 0€ and 100€, what is its price ? ");
-            while (tentative < 11 && finishProgram == 0)
+            while (attempt < 11 && finishProgram == 0)
             {
                 int choixNumber = (int.Parse(Console.ReadLine()));
                 if (choixNumber == randomNumber)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Congratulations, you have found the price in " + tentative + " attempts !");
+                    Console.WriteLine("Congratulations, you have found the price in " + attempt + " attempts !");
                     Console.ForegroundColor = ConsoleColor.White;
                     finishProgram = 1;
                 }
@@ -157,17 +157,17 @@ namespace ApplicationConsoleCSharp
                     Console.WriteLine("It's less expensive !");
                     Console.WriteLine("");
                 }
-                tentative++;
+                attempt++;
             }
-            if (tentative == 11)
+            if (attempt == 11)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You lost !");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("");
             }
-            tentative = 110 - (tentative * 10);
-            var player = new Players(name, game, tentative);
+            attempt = 110 - (attempt * 10);
+            var player = new Players(name, game, attempt);
             newPlayer.AddPlayer(player);
             Console.WriteLine("");
             Console.WriteLine("Press enter to exit");

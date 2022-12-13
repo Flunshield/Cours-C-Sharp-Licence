@@ -47,7 +47,6 @@ namespace ApplicationConsoleCSharp
                         break;
 
                     case 3:
-                        //Not completed and not functional
                         Console.Clear();
                         newPlayer.ReadPlayer();
                         Console.ReadLine();
@@ -60,9 +59,6 @@ namespace ApplicationConsoleCSharp
                         break;
 
                     default:
-                        finishProgram = 1;
-                        Console.WriteLine("Thanks for playing and see you soon !");
-                        Console.ReadLine();
                         break;
                 }
             }

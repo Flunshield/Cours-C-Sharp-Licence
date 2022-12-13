@@ -33,9 +33,18 @@ namespace ApplicationConsoleCSharp
                 string name = player.playerName;
                 string game = player.playerGame; 
                 var CurrentDirectory = Directory.GetCurrentDirectory();
-                StreamWriter addPlayerToTxt = new StreamWriter(CurrentDirectory + ".txt", true); //Adds a .txt file with the name of the player +his game and his score.
-                addPlayerToTxt.WriteLine(player.playerName + " " + player.playerGame + " " + player.playerScore);
-                addPlayerToTxt.Close();
+                if(player.playerGame == "*** Stone/Sheet/Scissors ***")
+                {
+                    StreamWriter addPlayerToTxt = new StreamWriter(CurrentDirectory + "Stone_Sheet_Scissors" + ".txt", true);
+                    addPlayerToTxt.WriteLine(player.playerName + " " + player.playerGame + " " + player.playerScore);
+                    addPlayerToTxt.Close();
+                }
+                if (player.playerGame == "*** The right price ***")
+                {
+                    StreamWriter addPlayerToTxt = new StreamWriter(CurrentDirectory + "right_price" + ".txt", true);
+                    addPlayerToTxt.WriteLine(player.playerName + " " + player.playerGame + " " + player.playerScore);
+                    addPlayerToTxt.Close();
+                }
             }
             catch (Exception e)
             {
@@ -53,16 +62,27 @@ namespace ApplicationConsoleCSharp
             try
             {
                 var CurrentDirectory = Directory.GetCurrentDirectory();
-                StreamReader reader = new StreamReader(CurrentDirectory + ".txt");
-                highScore = reader.ReadLine();
+                StreamReader readerStoneSheetScissors = new StreamReader(CurrentDirectory + "Stone_Sheet_Scissors" + ".txt");
+                highScore = readerStoneSheetScissors.ReadLine();
+                Console.WriteLine("*****                   Score for Stone/leaf/Scissors                    *****");
+                Console.WriteLine("");
                 while (highScore != null)
                 {
                     Console.WriteLine("*                       " + highScore);
-                    highScore = reader.ReadLine();
+                    highScore = readerStoneSheetScissors.ReadLine();
                 }
-
+                readerStoneSheetScissors.Close();
                 Console.WriteLine("******************************************************************************");
-                reader.Close();
+                Console.WriteLine("*****                   Score for The right price                        *****");
+                StreamReader readerRightPrice = new StreamReader(CurrentDirectory + "Stone_Sheet_Scissors" + ".txt");
+                highScore = readerRightPrice.ReadLine();
+                while (highScore != null)
+                {
+                    Console.WriteLine("*                       " + highScore);
+                    highScore = readerRightPrice.ReadLine();
+                }
+                readerStoneSheetScissors.Close();
+                Console.WriteLine("******************************************************************************");
                 Console.WriteLine("");
                 Console.WriteLine("Press enter to exit");
             }
