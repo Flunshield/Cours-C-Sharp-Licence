@@ -30,8 +30,9 @@ namespace ApplicationConsoleCSharp
             {
                 players.Add(player);
                 string name = player.playerName;
-                string game = player.playerGame;
-                StreamWriter addPlayerToTxt = new StreamWriter("C:\\Users\\pigge\\Documents\\ISITECH\\CSharp\\ApplicationConsoleCSharp\\Player" + name + game);
+                string game = player.playerGame; 
+                var CurrentDirectory = Directory.GetCurrentDirectory();
+                StreamWriter addPlayerToTxt = new StreamWriter(CurrentDirectory + name); //Adds a .txt file with the name of the player +his game and his score.
                 addPlayerToTxt.WriteLine(player.playerName);
                 addPlayerToTxt.WriteLine(player.playerGame);
                 addPlayerToTxt.WriteLine(player.playerScore);
