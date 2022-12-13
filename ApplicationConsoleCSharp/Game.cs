@@ -17,7 +17,6 @@ namespace ApplicationConsoleCSharp
             int party = 0;
             int nbGameWin = 0;
             string game = "*** Stone/Sheet/Scissors ***";
-
             Console.WriteLine("******************************************************************************");
             Console.WriteLine("*                   Stone/Sheet/Scissors                                     *");
             Console.WriteLine("******************************************************************************");
@@ -95,7 +94,6 @@ namespace ApplicationConsoleCSharp
                 }
                 party++;
             }
-
             if (nbGameWin >= 2)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -114,11 +112,10 @@ namespace ApplicationConsoleCSharp
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }
-
         public void RightPrice()
         {
             var rand = new Random();
-            int randomNumber = rand.Next(101);
+            int randomNumber = rand.Next(1001);
             int finishProgram = 0;
             int attempt = 1;
             string game = "*** The right price ***";
@@ -136,7 +133,7 @@ namespace ApplicationConsoleCSharp
             Console.WriteLine("What is the name of the player ?");
             string name = Console.ReadLine();
             Console.WriteLine("");
-            Console.WriteLine("The price is between 0€ and 100€, what is its price ? ");
+            Console.WriteLine("The price is between 0 and 1000, what is its price ? ");
             while (attempt < 11 && finishProgram == 0)
             {
                 int choixNumber = (int.Parse(Console.ReadLine()));

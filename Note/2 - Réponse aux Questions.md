@@ -60,6 +60,10 @@ La différence entre nos deux tableaux sont :
 ## Question 4 :
 Que signifie le terme "assembly" (assemblage) ?
 
+Assemblies are the fundamental units of deployment, version control, reuse, activation scoping, and security permissions for .NET-based applications. An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality. Assemblies take the form of executable (_.exe_) or dynamic link library (_.dll_) files, and are the building blocks of .NET applications. They provide the common language runtime with the information it needs to be aware of type implementations.
+
+Source : [learn.microsoft](https://learn.microsoft.com/en-us/dotnet/standard/assembly/)
+
 ## Question 5
 Citez un exemple reel d'un usage pertinent du mot clef **Private**.
 

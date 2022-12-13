@@ -16,7 +16,6 @@ namespace ApplicationConsoleCSharp
             Console.Clear();
             int finishProgram = 0;
             Players newPlayer = new Players();
-
             while (finishProgram == 0)
             {
                 Console.Clear();
@@ -40,28 +39,24 @@ namespace ApplicationConsoleCSharp
                         Console.Clear();
                         newGame.RightPrice();
                         break;
-
                     case 2:
                         Console.Clear();
                         newGame.StoneLeafScissors();
                         break;
-
                     case 3:
                         Console.Clear();
                         newPlayer.ReadPlayer();
                         Console.ReadLine();
                         break;
-
                     case 4:
                         finishProgram = 1;
                         Console.WriteLine("Thanks for playing and see you soon !");
-                        
-                        break;
 
+                        break;
                     default:
                         break;
                 }
             }
-        }       
+        }
     }
 }

@@ -12,10 +12,8 @@ namespace ApplicationConsoleCSharp
 {
     public class Players
     {
-
         List<Players> players = new List<Players> { };
         public Players() { }
-
         public Players(string name, string game, int score)
         {
             playerName = name;
@@ -25,15 +23,15 @@ namespace ApplicationConsoleCSharp
         public string playerName { get; set; }
         public string playerGame { get; set; }
         public int playerScore { get; set; }
-        public void AddPlayer (Players player)
+        public void AddPlayer(Players player)
         {
             try
             {
                 players.Add(player);
                 string name = player.playerName;
-                string game = player.playerGame; 
+                string game = player.playerGame;
                 var CurrentDirectory = Directory.GetCurrentDirectory();
-                if(player.playerGame == "*** Stone/Sheet/Scissors ***")
+                if (player.playerGame == "*** Stone/Sheet/Scissors ***")
                 {
                     StreamWriter addPlayerToTxt = new StreamWriter(CurrentDirectory + "Stone_Sheet_Scissors" + ".txt", true);
                     addPlayerToTxt.WriteLine(player.playerName + " " + player.playerGame + " " + player.playerScore);
@@ -90,7 +88,6 @@ namespace ApplicationConsoleCSharp
             {
                 Console.WriteLine("Exception: " + e.Message);
             }
-
         }
     }
 }
