@@ -1,0 +1,3 @@
+jul The right price 11
+jul Stone/Sheet/Scissors 2
+kil Stone/Sheet/Scissors 1

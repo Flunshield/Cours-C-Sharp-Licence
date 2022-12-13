@@ -32,10 +32,8 @@ namespace ApplicationConsoleCSharp
                 string name = player.playerName;
                 string game = player.playerGame; 
                 var CurrentDirectory = Directory.GetCurrentDirectory();
-                StreamWriter addPlayerToTxt = new StreamWriter(CurrentDirectory + name); //Adds a .txt file with the name of the player +his game and his score.
-                addPlayerToTxt.WriteLine(player.playerName);
-                addPlayerToTxt.WriteLine(player.playerGame);
-                addPlayerToTxt.WriteLine(player.playerScore);
+                StreamWriter addPlayerToTxt = new StreamWriter(CurrentDirectory + ".txt", true); //Adds a .txt file with the name of the player +his game and his score.
+                addPlayerToTxt.WriteLine(player.playerName + " " + player.playerGame + " " + player.playerScore);
                 addPlayerToTxt.Close();
             }
             catch (Exception e)
