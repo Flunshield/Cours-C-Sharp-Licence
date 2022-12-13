@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ApplicationConsoleCSharp
 {
@@ -25,14 +26,28 @@ namespace ApplicationConsoleCSharp
         public int playerScore { get; set; }
         public void AddPlayer (Players player)
         {
-            players.Add (player);
-            ReadPlayer();
+            try
+            {
+                players.Add(player);
+                string name = player.playerName;
+                string game = player.playerGame;
+                StreamWriter addPlayerToTxt = new StreamWriter("C:\\Users\\pigge\\Documents\\ISITECH\\CSharp\\ApplicationConsoleCSharp\\Player" + name + game);
+                addPlayerToTxt.WriteLine(player.playerName);
+                addPlayerToTxt.WriteLine(player.playerGame);
+                addPlayerToTxt.WriteLine(player.playerScore);
+                addPlayerToTxt.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
         }
         public void ReadPlayer()
         {
-            foreach (var test in players)
+            foreach (var player in players)
             {
-                Console.WriteLine("Hello " + test.playerName + " ton jeu est : " + test.playerGame + " et ton score est de : " + test.playerScore);
+                Console.WriteLine("Hello " + player.playerName + " your game is : " + player.playerGame + " and your scrore is : " + player.playerScore);
+
             }
         }
     }

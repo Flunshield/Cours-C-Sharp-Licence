@@ -15,6 +15,7 @@ namespace ApplicationConsoleCSharp
             var rand = new Random();
             int party = 0;
             int nbGameWin = 0;
+            string game = "Stone/Sheet/Scissors";
 
             Console.WriteLine("******************************************************************************");
             Console.WriteLine("*                   Stone/Sheet/Scissors                                     *");
@@ -81,12 +82,10 @@ namespace ApplicationConsoleCSharp
                 party++;
             }
 
-            string game = "Stone/Sheet/Scissors";
-            int score = nbGameWin;
-            var player = new Players(name, game, score);
+            var player = new Players(name, game, nbGameWin);
             newPlayer.AddPlayer(player);
-            return player;
             Console.WriteLine("");
+            return player;
         }
 
         public Players RightPrice()
@@ -139,27 +138,8 @@ namespace ApplicationConsoleCSharp
             }
             var player = new Players(name, game, tentative);
             newPlayer.AddPlayer(player);
-            return player;
             Console.WriteLine("");
-        }
-
-        public void HightScore()
-        {
-            Console.WriteLine("*********************************************************************************************");
-            Console.WriteLine("*                                  HightScore                                               *");
-            Console.WriteLine("*********************************************************************************************");
-            Console.WriteLine("*                                StoneLeafScissors                                          *");
-            Console.WriteLine("*********************************************************************************************");
-            Console.WriteLine("*Règle numéro 1 : Tu devras retenir la suite de nombre et la reproduire numbre après nombre *");
-            Console.WriteLine("*Règle numéro 2 : Pas le droit à l'erreur                                                   *");
-            Console.WriteLine("*                                                                                           *");
-            Console.WriteLine("*Règle numéro 4 : Bon courage !                                                             *");
-            Console.WriteLine("*********************************************************************************************");
-            Console.WriteLine("                                                                                             ");
-            Console.WriteLine("                                                                                             ");
-
+            return player;
         }
     }
-
-
 }
