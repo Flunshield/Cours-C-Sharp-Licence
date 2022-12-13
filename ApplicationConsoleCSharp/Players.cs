@@ -58,7 +58,7 @@ namespace ApplicationConsoleCSharp
             Console.WriteLine("******************************************************************************");
             Console.WriteLine("*                          Name *** Game *** Score                           *");
             Console.WriteLine("******************************************************************************");
-                var CurrentDirectory = Directory.GetCurrentDirectory();
+            var CurrentDirectory = Directory.GetCurrentDirectory();
             Console.WriteLine("*****                   Score for Stone/leaf/Scissors                    *****");
             if (File.Exists(CurrentDirectory + "Stone_Sheet_Scissors" + ".txt"))
             {
@@ -70,35 +70,34 @@ namespace ApplicationConsoleCSharp
                         highScore = readerStoneSheetScissors.ReadLine();
                     }
                     readerStoneSheetScissors.Close();
-                }
-                else
+            }
+            else
             {
                 Console.WriteLine("*                                                                            *");
                 Console.WriteLine("*                     Aucun score n'est encore réalisé                       *");
-                }
+            }
 
             Console.WriteLine("******************************************************************************");
             Console.WriteLine("*****                   Score for The right price                        *****");
             if (File.Exists(CurrentDirectory + "right_price" + ".txt"))
-                {
-
+            {
                 StreamReader readerRightPrice = new StreamReader(CurrentDirectory + "right_price" + ".txt");
                 highScore = readerRightPrice.ReadLine();
-                    while (highScore != null)
-                    {
-                        Console.WriteLine("*                       " + highScore);
-                        highScore = readerRightPrice.ReadLine();
-                    }
-                readerRightPrice.Close();
+                while (highScore != null)
+                {
+                    Console.WriteLine("*                       " + highScore);
+                    highScore = readerRightPrice.ReadLine();
                 }
-                else
+                readerRightPrice.Close();
+            }
+            else
             {
                 Console.WriteLine("*                                                                            *");
                 Console.WriteLine("*                     Aucun score n'est encore réalisé                       *");
-                }
-                Console.WriteLine("******************************************************************************");
-                Console.WriteLine("");
-                Console.WriteLine("Press enter to exit");
+            }
+            Console.WriteLine("******************************************************************************");
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to exit");
         }
     }
 }
