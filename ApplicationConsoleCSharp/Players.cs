@@ -7,6 +7,7 @@ using static System.Formats.Asn1.AsnWriter;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using System.IO;
+using System.Formats.Tar;
 
 namespace ApplicationConsoleCSharp
 {
@@ -57,37 +58,47 @@ namespace ApplicationConsoleCSharp
             Console.WriteLine("******************************************************************************");
             Console.WriteLine("*                          Name *** Game *** Score                           *");
             Console.WriteLine("******************************************************************************");
-            try
-            {
                 var CurrentDirectory = Directory.GetCurrentDirectory();
+            Console.WriteLine("*****                   Score for Stone/leaf/Scissors                    *****");
+            if (File.Exists(CurrentDirectory + "Stone_Sheet_Scissors" + ".txt"))
+            {
                 StreamReader readerStoneSheetScissors = new StreamReader(CurrentDirectory + "Stone_Sheet_Scissors" + ".txt");
                 highScore = readerStoneSheetScissors.ReadLine();
-                Console.WriteLine("*****                   Score for Stone/leaf/Scissors                    *****");
-                Console.WriteLine("");
-                while (highScore != null)
-                {
-                    Console.WriteLine("*                       " + highScore);
-                    highScore = readerStoneSheetScissors.ReadLine();
+                    while (highScore != null)
+                    {
+                        Console.WriteLine("*                       " + highScore);
+                        highScore = readerStoneSheetScissors.ReadLine();
+                    }
+                    readerStoneSheetScissors.Close();
                 }
-                readerStoneSheetScissors.Close();
-                Console.WriteLine("******************************************************************************");
-                Console.WriteLine("*****                   Score for The right price                        *****");
-                StreamReader readerRightPrice = new StreamReader(CurrentDirectory + "Stone_Sheet_Scissors" + ".txt");
+                else
+            {
+                Console.WriteLine("*                                                                            *");
+                Console.WriteLine("*                     Aucun score n'est encore réalisé                       *");
+                }
+
+            Console.WriteLine("******************************************************************************");
+            Console.WriteLine("*****                   Score for The right price                        *****");
+            if (File.Exists(CurrentDirectory + "right_price" + ".txt"))
+                {
+
+                StreamReader readerRightPrice = new StreamReader(CurrentDirectory + "right_price" + ".txt");
                 highScore = readerRightPrice.ReadLine();
-                while (highScore != null)
-                {
-                    Console.WriteLine("*                       " + highScore);
-                    highScore = readerRightPrice.ReadLine();
+                    while (highScore != null)
+                    {
+                        Console.WriteLine("*                       " + highScore);
+                        highScore = readerRightPrice.ReadLine();
+                    }
+                readerRightPrice.Close();
                 }
-                readerStoneSheetScissors.Close();
+                else
+            {
+                Console.WriteLine("*                                                                            *");
+                Console.WriteLine("*                     Aucun score n'est encore réalisé                       *");
+                }
                 Console.WriteLine("******************************************************************************");
                 Console.WriteLine("");
                 Console.WriteLine("Press enter to exit");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
         }
     }
 }
