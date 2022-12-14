@@ -2,11 +2,8 @@
 using APIWeb.Entities;
 using APIWeb.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Web;
-namespace APIWeb.Controllers;
-using System.Net;
-using System.Collections.Specialized;
 using APIWeb.Services;
+namespace APIWeb.Controllers;
 
 [ApiController]
 [Route("[Controller]")]
@@ -17,6 +14,7 @@ public class HeroController : ControllerBase
     {
         _context = dbContext;
     }
+
     [HttpGet]
     [Route("/getHeroes")]
     public async Task<ActionResult<List<Hero>>> Get()
@@ -26,10 +24,23 @@ public class HeroController : ControllerBase
 
     [HttpPost]
     [Route("/addHeroes")]
-    public void Post()
+    public async Task<ActionResult<List<Hero>>> Post()
     {
-        HeroesService addheros = new HeroesService();
-        addheros.AddHeroes();
+        Heroes addheros = new Heroes();
+        var newHeroes = addheros.AddHeroes();
+        Hero addNewHeroes = new Hero()
+        {
+            name = newHeroes.namePlayerGenerate,
+            force = newHeroes.forcePlayer,
+            sagesse = newHeroes.sagessePlayer,
+            vitality = newHeroes.vitalityPlayer,
+            classePlayer = newHeroes.classePlayerGenerate
+        };
+        _context.Heroes.AddAsync(addNewHeroes);
+        _context.SaveChanges();
+
+        return Ok(addNewHeroes);
     }
+
 }
 
