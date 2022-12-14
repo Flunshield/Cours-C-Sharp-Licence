@@ -1,22 +1,18 @@
 {
   "main": {
-    "id": "96c084851f9b8335",
+    "id": "15fd6df545589d11",
     "type": "split",
     "children": [
       {
-        "id": "57cb8fd75e9566df",
+        "id": "b20e59bb0b20ced1",
         "type": "tabs",
         "children": [
           {
-            "id": "36dbe08bc165d1d2",
+            "id": "d7bce79f2a1b2521",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 - C#.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -25,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "7cde877e9df6c8fd",
+    "id": "95209258e0346b17",
     "type": "split",
     "children": [
       {
-        "id": "0803d8479789b1cb",
+        "id": "da74f0c1c5cda9e5",
         "type": "tabs",
         "children": [
           {
-            "id": "d69060adec54c6dd",
+            "id": "aaa8d73f4bb263ff",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +39,7 @@
             }
           },
           {
-            "id": "b3c0954805e0c04b",
+            "id": "f6b07c942c19c605",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +54,7 @@
             }
           },
           {
-            "id": "1248bf31a45ce427",
+            "id": "9f6ca93e0e0384ed",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -72,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "53bee57535eb1724",
+    "id": "62bc4e6ad3a0b0d0",
     "type": "split",
     "children": [
       {
-        "id": "352d45f1e378895d",
+        "id": "9aec4dc59ac2ec1e",
         "type": "tabs",
         "children": [
           {
-            "id": "0b298df13a3bee55",
+            "id": "d1afee55eb84c663",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1 - C#.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +92,18 @@
             }
           },
           {
-            "id": "008943830cd04f9b",
+            "id": "fa87f0d86badd581",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1 - C#.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "f94867a2b559cca1",
+            "id": "132fa9a4bc29b50a",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,13 +114,11 @@
             }
           },
           {
-            "id": "03f92ff0339a57b3",
+            "id": "2bb7a50c31c4696c",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "1 - C#.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -136,16 +128,6 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "36dbe08bc165d1d2",
-  "lastOpenFiles": [
-    "C#.md",
-    "1 - C#.md",
-    "2 - Réponse aux Questions.md",
-    "learn.microsoft.com.md",
-    "().md",
-    "Pasted image 20221211161135.png.md",
-    "Capture d'écran/Pasted image 20221211161101.png",
-    "Capture d'écran/Pasted image 20221211160152.png",
-    "Capture d'écran/Pasted image 20221211160109.png"
-  ]
+  "active": "aaa8d73f4bb263ff",
+  "lastOpenFiles": []
 }
