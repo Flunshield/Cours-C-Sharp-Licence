@@ -18,7 +18,7 @@ public class ArmsController : ControllerBase
     [Route("/getAllArms")]
     public async Task<ActionResult<List<Arms>>> GetAllArms()
     {
-        return Ok(await _context.Heroes.ToListAsync());
+        return Ok(await _context.Arms.ToListAsync());
     }
 
     //Put this method as a comment so as not to crash Swagger.
