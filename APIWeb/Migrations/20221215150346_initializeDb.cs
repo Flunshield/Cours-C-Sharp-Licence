@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace APIWeb.Migrations
 {
     /// <inheritdoc />
-    public partial class firstMigration : Migration
+    public partial class initializeDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,19 +15,22 @@ namespace APIWeb.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ClassePlayers",
+                name: "Arms",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(type: "longtext", nullable: false)
+                    HeroesNameArms = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    EnemysNameArms = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     bonusForce = table.Column<long>(type: "bigint", nullable: false),
-                    bonusSagesse = table.Column<long>(type: "bigint", nullable: false)
+                    bonusSagesse = table.Column<long>(type: "bigint", nullable: false),
+                    bonusVitality = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClassePlayers", x => x.Id);
+                    table.PrimaryKey("PK_Arms", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -35,13 +38,17 @@ namespace APIWeb.Migrations
                 name: "Enemys",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    EnemysArms = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     force = table.Column<long>(type: "bigint", nullable: false),
                     sagesse = table.Column<long>(type: "bigint", nullable: false),
-                    vitality = table.Column<long>(type: "bigint", nullable: false)
+                    vitality = table.Column<long>(type: "bigint", nullable: false),
+                    classePlayer = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -53,13 +60,17 @@ namespace APIWeb.Migrations
                 name: "Heroes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    HeroesArms = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     force = table.Column<long>(type: "bigint", nullable: false),
                     sagesse = table.Column<long>(type: "bigint", nullable: false),
-                    vitality = table.Column<long>(type: "bigint", nullable: false)
+                    vitality = table.Column<long>(type: "bigint", nullable: false),
+                    classePlayer = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -72,7 +83,7 @@ namespace APIWeb.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ClassePlayers");
+                name: "Arms");
 
             migrationBuilder.DropTable(
                 name: "Enemys");

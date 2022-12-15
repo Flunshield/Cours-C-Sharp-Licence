@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221214143625_initialiseTableDb")]
-    partial class initialiseTableDb
+    [Migration("20221215150346_initializeDb")]
+    partial class initializeDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,9 +23,17 @@ namespace APIWeb.Migrations
 
             modelBuilder.Entity("APIWeb.Entities.Arms", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("EnemysNameArms")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("HeroesNameArms")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<long>("bonusForce")
                         .HasColumnType("bigint");
@@ -36,41 +44,24 @@ namespace APIWeb.Migrations
                     b.Property<long>("bonusVitality")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.HasKey("Id");
 
                     b.ToTable("Arms");
                 });
 
-            modelBuilder.Entity("APIWeb.Entities.ClassePlayer", b =>
+            modelBuilder.Entity("APIWeb.Entities.Enemys", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<long>("bonusForce")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("bonusSagesse")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("name")
+                    b.Property<string>("EnemysArms")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("ClassePlayers");
-                });
-
-            modelBuilder.Entity("APIWeb.Entities.Enemys", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("classePlayer")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<long>("force")
                         .HasColumnType("bigint");
@@ -92,9 +83,17 @@ namespace APIWeb.Migrations
 
             modelBuilder.Entity("APIWeb.Entities.Hero", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("HeroesArms")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("classePlayer")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<long>("force")
                         .HasColumnType("bigint");

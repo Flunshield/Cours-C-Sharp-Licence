@@ -2,6 +2,7 @@
 using APIWeb.Entities;
 using APIWeb.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace APIWeb.Controllers;
 
@@ -26,7 +27,7 @@ public class ArmsController : ControllerBase
     [Route("/getWeapon/{id}")]
     public async Task<ActionResult<List<Arms>>> GetWeapon(int id)
     {
-        Arms weaponGet = await _context.Arms.FirstOrDefaultAsync(weaponName => weaponName.Id == id);
+        Arms? weaponGet = await _context.Arms.FirstOrDefaultAsync(weaponName => weaponName.Id == id);
         if (weaponGet == null)
         {
             return NotFound("Arm not Found");
@@ -41,7 +42,11 @@ public class ArmsController : ControllerBase
     {
         await _context.Arms.AddAsync(weapon);
         await _context.SaveChangesAsync();
-        return Ok(weapon);
+        if (weapon == null)
+        {
+            return NotFound("The weapon not has been created !");
+        }
+        return Ok("The weapon has been created ! ");
     }
 
     //UpdateArms([FromBody] Arms request) allows you to modify the characteristics of a weapon
@@ -49,7 +54,7 @@ public class ArmsController : ControllerBase
     [Route("/changeWeapon")]
     public async Task<ActionResult<List<Arms>>> UpdateArms([FromBody] Arms request)
     {
-        Arms weapon = await _context.Arms.FirstOrDefaultAsync(weaponId => weaponId.Id == request.Id);
+        Arms? weapon = await _context.Arms.FirstOrDefaultAsync(weaponId => weaponId.Id == request.Id);
         if (weapon == null)
         {
             return BadRequest(request);
@@ -60,6 +65,25 @@ public class ArmsController : ControllerBase
         weapon.bonusSagesse = request.bonusSagesse;
         weapon.bonusVitality = request.bonusVitality;
         await _context.SaveChangesAsync();
-        return Ok(weapon);
+        if (weapon == null)
+        {
+            return NotFound("The weapon not has been modified !");
+        }
+        return Ok("The weapon has been modified !");
+    }
+
+    [HttpDelete]
+    [Route("/deleteWeapon")]
+    public async Task<ActionResult<List<Arms>>> DeleteWeapon([FromBody] Arms request)
+    {
+        Arms? weapon = await _context.Arms.FirstOrDefaultAsync(weaponId => weaponId.Id == request.Id);
+        if (weapon == null)
+        {
+            return NotFound("Hero not Found");
+        }
+        _context.Remove(weapon);
+
+        await _context.SaveChangesAsync();
+        return Ok("The weapon has been deleted !");
     }
 }

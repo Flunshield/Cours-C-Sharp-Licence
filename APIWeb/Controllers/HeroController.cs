@@ -29,7 +29,7 @@ public class HeroController : ControllerBase
     [Route("/getHeroes/{name}")]
     public async Task<ActionResult<List<Hero>>> GetHero(string name)
     {
-        Hero heroGet = await _context.Heroes.FirstOrDefaultAsync(heroName => heroName.name == name);
+        Hero? heroGet = await _context.Heroes.FirstOrDefaultAsync(heroName => heroName.name == name);
         if (heroGet == null)
         {
             return NotFound("Hero not Found");
@@ -55,7 +55,11 @@ public class HeroController : ControllerBase
         };
         await _context.Heroes.AddAsync(addNewHeroes);
         await _context.SaveChangesAsync();
-        return Ok(addNewHeroes);
+        if (addNewHeroes == null)
+        {
+            return BadRequest();
+        }
+        return Ok("The " + addNewHeroes.name + " hero has been created ! ");
     }
 
     //UpdateHero([FromBody] Enemys request) allows you to modify one or more elements of an hero by its id sent from the body.
@@ -63,7 +67,7 @@ public class HeroController : ControllerBase
     [Route("/changeHeroFeature")]
     public async Task<ActionResult<List<Hero>>> UpdateHero([FromBody] Hero request)
     {
-        Hero hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == request.Id);
+        Hero? hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == request.Id);
         if (hero == null)
         {
             return BadRequest(request);
@@ -75,7 +79,23 @@ public class HeroController : ControllerBase
         hero.sagesse = request.sagesse;
         hero.classePlayer = request.classePlayer;
         await _context.SaveChangesAsync();
-        return Ok(hero);
+        return Ok("The " + hero.name + " hero has been modified !");
+    }
+
+    //eleteHero([FromBody] Hero request) allows you to delete an hero based on its id
+    [HttpDelete]
+    [Route("/deleteHero")]
+    public async Task<ActionResult<List<Hero>>> DeleteHero([FromBody] Hero request)
+    {
+        Hero? hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == request.Id);
+        if (hero == null)
+        {
+            return NotFound("Hero not Found");
+        }
+        _context.Remove(hero);
+
+        await _context.SaveChangesAsync();
+        return Ok("The " + hero.name + " hero has been deleted !");
     }
 
     // Ne fonctionne pas
@@ -87,7 +107,7 @@ public class HeroController : ControllerBase
     //    ArmsController checkArm = new ArmsController();
 
     //    int IdWeapon = 0;
-        
+
     //    switch (hero.HeroesArms)
     //    {
     //        case "Sword":

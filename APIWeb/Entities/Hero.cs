@@ -2,7 +2,7 @@
 
 public class Hero
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string HeroesArms { get; set; } = string.Empty;
     public string name { get; set; } = string.Empty;
 

@@ -2,7 +2,7 @@
 
 public class Enemys
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string EnemysArms { get; set; } = string.Empty;
     public string name { get; set; } = string.Empty;
 

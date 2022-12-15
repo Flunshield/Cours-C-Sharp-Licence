@@ -28,7 +28,7 @@ public class EnemysController : ControllerBase
     [Route("/getEnemy/{name}")]
     public async Task<ActionResult<List<Enemys>>> GetEnemys(string name)
     {
-        Enemys enemysGet = await _context.Enemys.FirstOrDefaultAsync(enemysName => enemysName.name == name);
+        Enemys? enemysGet = await _context.Enemys.FirstOrDefaultAsync(enemysName => enemysName.name == name);
         if (enemysGet == null)
         {
             return NotFound("Enemy not Found");
@@ -54,7 +54,7 @@ public class EnemysController : ControllerBase
         };
         await _context.Enemys.AddAsync(addNewEnemys);
         await _context.SaveChangesAsync();
-        return Ok(addNewEnemys);
+        return Ok("The " + addNewEnemys.name + "enemy was created");
     }
 
     //UpdateEnemy([FromBody] Enemys request) allows you to modify one or more elements of an enemy by its id sent from the body.
@@ -62,7 +62,7 @@ public class EnemysController : ControllerBase
     [Route("/changeEnemyFeature")]
     public async Task<ActionResult<List<Enemys>>> UpdateEnemy([FromBody] Enemys request)
     {
-        Enemys enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == request.Id);
+        Enemys? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == request.Id);
         if (enemy == null)
         {
             return BadRequest(request);
@@ -74,7 +74,23 @@ public class EnemysController : ControllerBase
         enemy.sagesse = request.sagesse;
         enemy.classePlayer = request.classePlayer;
         await _context.SaveChangesAsync();
-        return Ok(enemy);
+        return Ok("The " + enemy.name + " enemy has been modified !");
+    }
+
+    //DeleteEnemy([FromBody] Enemys request) allows you to delete an enemy based on its id
+    [HttpDelete]
+    [Route("/deleteEnemy")]
+    public async Task<ActionResult<List<Enemys>>> DeleteEnemy([FromBody] Enemys request)
+    {
+        Enemys? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == request.Id);
+        if (enemy == null)
+        {
+            return BadRequest(request);
+        }
+        _context.Remove(enemy);
+
+        await _context.SaveChangesAsync();
+        return Ok("The " + enemy.name + " enemy has been deleted !");
     }
 }
 

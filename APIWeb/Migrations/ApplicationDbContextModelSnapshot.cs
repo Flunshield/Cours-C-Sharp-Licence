@@ -20,9 +20,9 @@ namespace APIWeb.Migrations
 
             modelBuilder.Entity("APIWeb.Entities.Arms", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
                     b.Property<string>("EnemysNameArms")
                         .IsRequired()
@@ -48,9 +48,9 @@ namespace APIWeb.Migrations
 
             modelBuilder.Entity("APIWeb.Entities.Enemys", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
                     b.Property<string>("EnemysArms")
                         .IsRequired()
@@ -80,9 +80,9 @@ namespace APIWeb.Migrations
 
             modelBuilder.Entity("APIWeb.Entities.Hero", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
                     b.Property<string>("HeroesArms")
                         .IsRequired()
