@@ -25,7 +25,7 @@ public class EnemysController : ControllerBase
 
     //GetEnemys(string name) Allows you to view the selected enemy whit name stored in the database.
     [HttpGet]
-    [Route("/getEnemys/{name}")]
+    [Route("/getEnemy/{name}")]
     public async Task<ActionResult<List<Enemys>>> GetEnemys(string name)
     {
         Enemys enemysGet = await _context.Enemys.FirstOrDefaultAsync(enemysName => enemysName.name == name);
@@ -38,7 +38,7 @@ public class EnemysController : ControllerBase
 
     //Allows you to randomly generate an enemy and store it in the base. The enemy is generated from the AddEnemys() method of the request.
     [HttpPost]
-    [Route("/addEnemys")]
+    [Route("/addEnemy")]
     public async Task<ActionResult<List<Enemys>>> PostEnemy()
     {
         EnemysService addenemys = new EnemysService();
@@ -59,7 +59,7 @@ public class EnemysController : ControllerBase
 
     //UpdateEnemy([FromBody] Enemys request) allows you to modify one or more elements of an enemy by its id sent from the body.
     [HttpPut]
-    [Route("/changeEnemysFeature")]
+    [Route("/changeEnemyFeature")]
     public async Task<ActionResult<List<Enemys>>> UpdateEnemy([FromBody] Enemys request)
     {
         Enemys enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == request.Id);

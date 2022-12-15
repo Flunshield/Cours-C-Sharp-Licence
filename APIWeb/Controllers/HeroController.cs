@@ -38,7 +38,7 @@ public class HeroController : ControllerBase
 
     //Allows you to randomly generate an hero and store it in the base. The hero is generated from the AddHeroes() method of the request.
     [HttpPost]
-    [Route("/addHeroes")]
+    [Route("/addHero")]
     public async Task<ActionResult<List<Hero>>> Post()
     {
         HeroesService addheros = new HeroesService();

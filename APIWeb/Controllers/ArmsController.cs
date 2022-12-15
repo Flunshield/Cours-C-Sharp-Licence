@@ -8,6 +8,10 @@ namespace APIWeb.Controllers;
 public class ArmsController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
+
+    public ArmsController()
+    {
+    }
     public ArmsController(ApplicationDbContext dbContext)
     {
         _context = dbContext;
@@ -44,6 +48,7 @@ public class ArmsController : ControllerBase
         return Ok(weapon);
     }
 
+    //UpdateArms([FromBody] Arms request) allows you to modify the characteristics of a weapon
     [HttpPut]
     [Route("/changeWeapon")]
     public async Task<ActionResult<List<Arms>>> UpdateArms([FromBody] Arms request)
