@@ -72,3 +72,5 @@ Nous devons utiliser le mot-clef **Private** dans le cas où notre classe pourra
 Exemple de classe : Une classe qui gère l'ajout et le retrait d'argent sur nos comptes.
 
 ## Question 6 : Qu'est-ce q'un ORM ?
+Un ORM signifie que nous allons traduire de l'Objet en Relationnel et du Relationnel en objet. 
+Si nous souhaitons ajouter des données dans une table, nous allons lui affecter directement via une entity des valeurs.

@@ -10,7 +10,6 @@ namespace APIWeb.Services
         public HeroesService() { }
         public HeroesService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, string armsPlayerGenerate)
         {
-            int Id;
             this.namePlayerGenerate = namePlayerGenerate;
             this.forcePlayer = forcePlayer;
             this.sagessePlayer = sagessePlayer;
@@ -18,12 +17,12 @@ namespace APIWeb.Services
             this.classePlayerGenerate = classePlayerGenerate;
             this.armsPlayerGenerate = armsPlayerGenerate;
         }
-        public string namePlayerGenerate { get; set; }
+        public string namePlayerGenerate { get; set; } = string.Empty;
         public long forcePlayer { get; set; }
         public long sagessePlayer { get; set; }
         public long vitalityPlayer { get; set; }
-        public string classePlayerGenerate { get; set; }
-        public string armsPlayerGenerate { get; set; }
+        public string classePlayerGenerate { get; set; } = string.Empty;
+        public string armsPlayerGenerate { get; set; } = string.Empty;
 
         internal HeroesService AddHeroes()
         {
