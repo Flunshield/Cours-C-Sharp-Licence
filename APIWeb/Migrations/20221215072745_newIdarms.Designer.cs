@@ -2,6 +2,7 @@
 using APIWeb.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221215072745_newIdarms")]
+    partial class newIdarms
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,9 +57,8 @@ namespace APIWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("EnemysArms")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("IdEnemysArms")
+                        .HasColumnType("int");
 
                     b.Property<string>("classePlayer")
                         .IsRequired()
@@ -86,9 +88,8 @@ namespace APIWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("HeroesArms")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("IdHeroesArms")
+                        .HasColumnType("int");
 
                     b.Property<string>("classePlayer")
                         .IsRequired()

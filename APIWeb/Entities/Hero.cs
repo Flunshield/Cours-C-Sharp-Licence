@@ -3,6 +3,7 @@
 public class Hero
 {
     public int Id { get; set; }
+    public string HeroesArms { get; set; }
     public string name { get; set; } = string.Empty;
 
     public long force { get; set; }

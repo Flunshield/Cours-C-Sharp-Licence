@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APIWeb.Services
 {
-    public class HeroesService
+    public class EnemysService
     {
-        public HeroesService() { }
-        public HeroesService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, string armsPlayerGenerate)
+        public EnemysService() { }
+        public EnemysService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, string armsPlayerGenerate)
         {
             int Id;
             this.namePlayerGenerate = namePlayerGenerate;
@@ -25,13 +25,13 @@ namespace APIWeb.Services
         public string classePlayerGenerate { get; set; }
         public string armsPlayerGenerate { get; set; }
 
-        internal HeroesService AddHeroes()
+        internal EnemysService AddEnemys()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             var random = new Random();
             var nameSize = new char[random.Next(3,9)];
-            string[] classePlayer = { "Warrior", "Mage", "Thief" };
-            string[] armsPlayer = { "Sword", "Scèptre", "Dagger" };
+            string[] classePlayer = { "Beserker", "Wizard", "Assassin" };
+            string[] armsPlayer = { "Axe", "Scèptre", "Dagger" };
             int classePlayerGenerateNumber = random.Next(classePlayer.Length);
             string armsPlayerGenerate = "";
 
@@ -58,9 +58,8 @@ namespace APIWeb.Services
                 armsPlayerGenerate = armsPlayer[2];
             }
 
-
-            HeroesService heroes = new HeroesService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
-            return heroes;
+            EnemysService enemys = new EnemysService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
+            return enemys;
         }
     }
 }

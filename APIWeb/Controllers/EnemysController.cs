@@ -1,22 +1,47 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using APIWeb.Entities;
-
+using APIWeb.Context;
+using Microsoft.EntityFrameworkCore;
+using APIWeb.Services;
 namespace APIWeb.Controllers;
 
+[ApiController]
+[Route("[Controller]")]
 public class EnemysController : ControllerBase
 {
-    private string[] Enemys = new[]
+    private readonly ApplicationDbContext _context;
+    public EnemysController(ApplicationDbContext dbContext)
     {
-        "Batman", "SuperMan", "Flash", "CoolMan", "MildMan", "JulienMan"
-    };
+        _context = dbContext;
+    }
 
     [HttpGet]
-    public IEnumerable<Enemys> Get()
+    [Route("/getEnemys")]
+    public async Task<ActionResult<List<Enemys>>> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new Enemys
-        {
-        })
-        .ToArray();
+        return Ok(await _context.Enemys.ToListAsync());
     }
+
+    [HttpPost]
+    [Route("/addEnemys")]
+    public async Task<ActionResult<List<Enemys>>> Post()
+    {
+        EnemysService addenemys = new EnemysService();
+        var newEnemys = addenemys.AddEnemys();
+        Enemys addNewEnemys = new Enemys()
+        {
+            name = newEnemys.namePlayerGenerate,
+            force = newEnemys.forcePlayer,
+            sagesse = newEnemys.sagessePlayer,
+            vitality = newEnemys.vitalityPlayer,
+            classePlayer = newEnemys.classePlayerGenerate,
+            EnemysArms = newEnemys.armsPlayerGenerate
+        };
+        _context.Enemys.AddAsync(addNewEnemys);
+        _context.SaveChanges();
+
+        return Ok(addNewEnemys);
+    }
+
 }
 

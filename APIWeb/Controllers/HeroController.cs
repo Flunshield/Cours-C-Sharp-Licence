@@ -26,7 +26,7 @@ public class HeroController : ControllerBase
     [Route("/addHeroes")]
     public async Task<ActionResult<List<Hero>>> Post()
     {
-        Heroes addheros = new Heroes();
+        HeroesService addheros = new HeroesService();
         var newHeroes = addheros.AddHeroes();
         Hero addNewHeroes = new Hero()
         {
@@ -34,7 +34,8 @@ public class HeroController : ControllerBase
             force = newHeroes.forcePlayer,
             sagesse = newHeroes.sagessePlayer,
             vitality = newHeroes.vitalityPlayer,
-            classePlayer = newHeroes.classePlayerGenerate
+            classePlayer = newHeroes.classePlayerGenerate,
+            HeroesArms = newHeroes.armsPlayerGenerate
         };
         _context.Heroes.AddAsync(addNewHeroes);
         _context.SaveChanges();
