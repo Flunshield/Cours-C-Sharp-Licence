@@ -1,6 +1,3 @@
-**L'API n'est pas terminé, il reste encore à réaliser les classes EquipWeapon() et RemoveWeapon() qui permettrons l'ajout et le retrait des statistique de l'arme.**
-
-
 Commande initial pour lancer l'API : 
 ```dotnet
 dotnet run --launch-profile https
@@ -23,9 +20,19 @@ Pour visualiser un héros en particulié :
 https://localhost:7148/getHeroes/{name}
 ```
 
-Pour modifier un héro :
+Pour equiper l'arme d'un héro :
 ```
-https://localhost:7148/changeHeroFeature
+https://localhost:7148/equipWeapon/{id}
+```
+
+Pour retirer l'arme d'un héro :
+```
+https://localhost:7148/removeWeaponHero/{id}
+```
+
+Pour supprimer un héro :
+```
+https://localhost:7148/deleteHero
 ```
 
 **EndPoint Ennemi**
@@ -45,9 +52,19 @@ Pour visualiser un ennemi en particulié :
 https://localhost:7148/getEnemy/{name}
 ```
 
-Pour modifier un ennemi :
+Pour equiper l'arme d'un ennemi :
 ```
-https://localhost:7148/changeEnemyFeature
+https://localhost:7148/equipWeaponEnemy/{id}
+```
+
+Pour retirer l'arme d'un ennemi :
+```
+https://localhost:7148/removeWeaponEnemy/{id}
+```
+
+Pour supprimer un ennemi :
+```
+https://localhost:7148/deleteEnemy
 ```
 
 **EndPoint Armes**
@@ -70,4 +87,8 @@ https://localhost:7148/getWeapon/{id}
 Pour modifier une arme :
 ```
 https://localhost:7148/changeWeapon
+```
+Pour supprimer une arme :
+```
+https://localhost:7148/deleteWeapon
 ```

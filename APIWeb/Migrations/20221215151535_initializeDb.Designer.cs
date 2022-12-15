@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221215150346_initializeDb")]
+    [Migration("20221215151535_initializeDb")]
     partial class initializeDb
     {
         /// <inheritdoc />
@@ -55,9 +55,8 @@ namespace APIWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("EnemysArms")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<long>("IdArms")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("classePlayer")
                         .IsRequired()
@@ -87,9 +86,8 @@ namespace APIWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("HeroesArms")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<long>("IdArms")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("classePlayer")
                         .IsRequired()

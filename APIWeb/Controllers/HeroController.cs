@@ -51,7 +51,7 @@ public class HeroController : ControllerBase
             sagesse = newHeroes.sagessePlayer,
             vitality = newHeroes.vitalityPlayer,
             classePlayer = newHeroes.classePlayerGenerate,
-            HeroesArms = newHeroes.armsPlayerGenerate
+            IdArms = newHeroes.armsPlayerGenerate
         };
         await _context.Heroes.AddAsync(addNewHeroes);
         await _context.SaveChangesAsync();
@@ -62,22 +62,44 @@ public class HeroController : ControllerBase
         return Ok("The " + addNewHeroes.name + " hero has been created ! ");
     }
 
-    //UpdateHero([FromBody] Enemys request) allows you to modify one or more elements of an hero by its id sent from the body.
+    //EquipWeapon(long id) allows you to modify one or more elements of an hero.
     [HttpPut]
-    [Route("/changeHeroFeature")]
-    public async Task<ActionResult<List<Hero>>> UpdateHero([FromBody] Hero request)
+    [Route("/equipWeapon/{id}")]
+    public async Task<ActionResult<List<Hero>>> EquipWeapon(long id)
     {
-        Hero? hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == request.Id);
+        Hero? hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == id);
+        Arms? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == hero.IdArms);
         if (hero == null)
         {
-            return BadRequest(request);
+            return BadRequest(hero);
         }
-        hero.HeroesArms = request.HeroesArms;
-        hero.name = request.name;
-        hero.force = request.force;
-        hero.vitality = request.vitality;
-        hero.sagesse = request.sagesse;
-        hero.classePlayer = request.classePlayer;
+        hero.IdArms = hero.IdArms;
+        hero.name = hero.name;
+        hero.force = hero.force + checkArm.bonusForce;
+        hero.vitality = hero.vitality + checkArm.bonusVitality;
+        hero.sagesse = hero.sagesse + checkArm.bonusSagesse;
+        hero.classePlayer = hero.classePlayer;
+        await _context.SaveChangesAsync();
+        return Ok("The " + hero.name + " hero has been modified !");
+    }
+
+    //RemoveWeapon(long id) allows you to modify one or more elements of an hero.
+    [HttpPut]
+    [Route("/removeWeaponHero/{id}")]
+    public async Task<ActionResult<List<Hero>>> RemoveWeapon(long id)
+    {
+        Hero? hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == id);
+        Arms? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == hero.IdArms);
+        if (hero == null)
+        {
+            return BadRequest(hero);
+        }
+        hero.IdArms = hero.IdArms;
+        hero.name = hero.name;
+        hero.force = hero.force - checkArm.bonusForce;
+        hero.vitality = hero.vitality - checkArm.bonusVitality;
+        hero.sagesse = hero.sagesse - checkArm.bonusSagesse;
+        hero.classePlayer = hero.classePlayer;
         await _context.SaveChangesAsync();
         return Ok("The " + hero.name + " hero has been modified !");
     }
@@ -97,41 +119,5 @@ public class HeroController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok("The " + hero.name + " hero has been deleted !");
     }
-
-    // Ne fonctionne pas
-    //[HttpPut]
-    //[Route("/changeHeroFeature/{id}")]
-    //public async Task<ActionResult<List<Hero>>> EquipWeapon(int id)
-    //{
-    //    Hero hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == id);
-    //    ArmsController checkArm = new ArmsController();
-
-    //    int IdWeapon = 0;
-
-    //    switch (hero.HeroesArms)
-    //    {
-    //        case "Sword":
-    //            IdWeapon = 1;
-    //            break;
-
-    //        case "Scèptre":
-    //            IdWeapon = 2;
-    //            break;
-
-    //        case "Dagger":
-    //            IdWeapon = 3;
-    //            break;
-    //    }
-
-    //    ArmsController weapon = checkArm.GetWeapon(IdWeapon);
-    //    if (hero == null)
-    //    {
-    //        return BadRequest("Hero not Found");
-    //    }
-
-    //    HeroesService newFeature = HeroesService.AddFeatureWeaponHeroes(hero, weapon);
-    //    return Ok(hero);
-    //}
-
 }
 

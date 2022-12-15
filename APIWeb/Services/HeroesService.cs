@@ -1,4 +1,5 @@
-﻿using APIWeb.Entities;
+﻿using APIWeb.Context;
+using APIWeb.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +9,7 @@ namespace APIWeb.Services
     public class HeroesService
     {
         public HeroesService() { }
-        public HeroesService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, string armsPlayerGenerate)
+        public HeroesService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, long armsPlayerGenerate)
         {
             this.namePlayerGenerate = namePlayerGenerate;
             this.forcePlayer = forcePlayer;
@@ -22,16 +23,15 @@ namespace APIWeb.Services
         public long sagessePlayer { get; set; }
         public long vitalityPlayer { get; set; }
         public string classePlayerGenerate { get; set; } = string.Empty;
-        public string armsPlayerGenerate { get; set; } = string.Empty;
+        public long armsPlayerGenerate { get; set; }
         internal HeroesService AddHeroes()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             var random = new Random();
             var nameSize = new char[random.Next(3, 9)];
             string[] classePlayer = { "Warrior", "Mage", "Thief" };
-            string[] armsPlayer = { "Sword", "Scèptre", "Dagger" };
             int classePlayerGenerateNumber = random.Next(classePlayer.Length);
-            string armsPlayerGenerate = "";
+            long armsPlayerGenerate = 999;
 
             for (int i = 0; i < nameSize.Length; i++)
             {
@@ -44,24 +44,18 @@ namespace APIWeb.Services
             string classePlayerGenerate = classePlayer[classePlayerGenerateNumber];
             if (classePlayerGenerate == classePlayer[0])
             {
-                armsPlayerGenerate = armsPlayer[0];
+                armsPlayerGenerate = 1;
             }
             if (classePlayerGenerate == classePlayer[1])
             {
-                armsPlayerGenerate = armsPlayer[1];
+                armsPlayerGenerate = 2;
             }
             if (classePlayerGenerate == classePlayer[2])
             {
-                armsPlayerGenerate = armsPlayer[2];
+                armsPlayerGenerate = 3;
             }
             HeroesService heroes = new HeroesService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
             return heroes;
         }
-
-        //Ne fonctionne pas
-        //internal HeroesService AddFeatureWeaponHeroes(Hero hero, ArmsController checkArm)
-        //{
-
-        //    return null;
     }
 }

@@ -50,29 +50,51 @@ public class EnemysController : ControllerBase
             sagesse = newEnemys.sagessePlayer,
             vitality = newEnemys.vitalityPlayer,
             classePlayer = newEnemys.classePlayerGenerate,
-            EnemysArms = newEnemys.armsPlayerGenerate
+            IdArms = newEnemys.armsPlayerGenerate
         };
         await _context.Enemys.AddAsync(addNewEnemys);
         await _context.SaveChangesAsync();
         return Ok("The " + addNewEnemys.name + "enemy was created");
     }
 
-    //UpdateEnemy([FromBody] Enemys request) allows you to modify one or more elements of an enemy by its id sent from the body.
+    //EquipWeapon(long id) allows you to modify one or more elements of an hero.
     [HttpPut]
-    [Route("/changeEnemyFeature")]
-    public async Task<ActionResult<List<Enemys>>> UpdateEnemy([FromBody] Enemys request)
+    [Route("/equipWeaponEnemy/{id}")]
+    public async Task<ActionResult<List<Enemys>>> EquipWeapon(long id)
     {
-        Enemys? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == request.Id);
+        Enemys? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == id);
+        Arms? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == enemy.IdArms);
         if (enemy == null)
         {
-            return BadRequest(request);
+            return BadRequest(enemy);
         }
-        enemy.EnemysArms = request.EnemysArms;
-        enemy.name = request.name;
-        enemy.force = request.force;
-        enemy.vitality = request.vitality;
-        enemy.sagesse = request.sagesse;
-        enemy.classePlayer = request.classePlayer;
+        enemy.IdArms = enemy.IdArms;
+        enemy.name = enemy.name;
+        enemy.force = enemy.force + checkArm.bonusForce;
+        enemy.vitality = enemy.vitality + checkArm.bonusVitality;
+        enemy.sagesse = enemy.sagesse + checkArm.bonusSagesse;
+        enemy.classePlayer = enemy.classePlayer;
+        await _context.SaveChangesAsync();
+        return Ok("The " + enemy.name + " enemy has been modified !");
+    }
+
+    //RemoveWeapon(long id) allows you to modify one or more elements of an hero.
+    [HttpPut]
+    [Route("/removeWeaponEnemy/{id}")]
+    public async Task<ActionResult<List<Enemys>>> RemoveWeapon(long id)
+    {
+        Enemys? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == id);
+        Arms? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == enemy.IdArms);
+        if (enemy == null)
+        {
+            return BadRequest(enemy);
+        }
+        enemy.IdArms = enemy.IdArms;
+        enemy.name = enemy.name;
+        enemy.force = enemy.force - checkArm.bonusForce;
+        enemy.vitality = enemy.vitality - checkArm.bonusVitality;
+        enemy.sagesse = enemy.sagesse - checkArm.bonusSagesse;
+        enemy.classePlayer = enemy.classePlayer;
         await _context.SaveChangesAsync();
         return Ok("The " + enemy.name + " enemy has been modified !");
     }

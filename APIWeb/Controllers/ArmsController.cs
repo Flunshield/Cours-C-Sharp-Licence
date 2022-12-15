@@ -72,6 +72,7 @@ public class ArmsController : ControllerBase
         return Ok("The weapon has been modified !");
     }
 
+
     [HttpDelete]
     [Route("/deleteWeapon")]
     public async Task<ActionResult<List<Arms>>> DeleteWeapon([FromBody] Arms request)

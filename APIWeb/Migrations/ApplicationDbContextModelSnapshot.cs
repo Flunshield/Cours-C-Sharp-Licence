@@ -52,9 +52,8 @@ namespace APIWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("EnemysArms")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<long>("IdArms")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("classePlayer")
                         .IsRequired()
@@ -84,9 +83,8 @@ namespace APIWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("HeroesArms")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<long>("IdArms")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("classePlayer")
                         .IsRequired()

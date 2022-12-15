@@ -8,7 +8,7 @@ namespace APIWeb.Services
     public class EnemysService
     {
         public EnemysService() { }
-        public EnemysService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, string armsPlayerGenerate)
+        public EnemysService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, long armsPlayerGenerate)
         {
             this.namePlayerGenerate = namePlayerGenerate;
             this.forcePlayer = forcePlayer;
@@ -22,16 +22,15 @@ namespace APIWeb.Services
         public long sagessePlayer { get; set; }
         public long vitalityPlayer { get; set; }
         public string classePlayerGenerate { get; set; } = string.Empty;
-        public string armsPlayerGenerate { get; set; } = string.Empty;
+        public long armsPlayerGenerate { get; set; }
         internal EnemysService AddEnemys()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             var random = new Random();
             var nameSize = new char[random.Next(3,9)];
             string[] classePlayer = { "Beserker", "Wizard", "Assassin" };
-            string[] armsPlayer = { "Axe", "Scèptre", "Dagger" };
             int classePlayerGenerateNumber = random.Next(classePlayer.Length);
-            string armsPlayerGenerate = "";
+            long armsPlayerGenerate = 999;
             for (int i = 0; i < nameSize.Length; i++)
             {
                 nameSize[i] = characters[random.Next(characters.Length)];
@@ -43,15 +42,15 @@ namespace APIWeb.Services
             string classePlayerGenerate = classePlayer[classePlayerGenerateNumber];
             if (classePlayerGenerate == classePlayer[0])
             {
-                armsPlayerGenerate = armsPlayer[0];
+                armsPlayerGenerate = 1;
             }
             if (classePlayerGenerate == classePlayer[1])
             {
-                armsPlayerGenerate = armsPlayer[1];
+                armsPlayerGenerate = 2;
             }
             if (classePlayerGenerate == classePlayer[2])
             {
-                armsPlayerGenerate = armsPlayer[2];
+                armsPlayerGenerate = 3;
             }
             EnemysService enemys = new EnemysService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
             return enemys;

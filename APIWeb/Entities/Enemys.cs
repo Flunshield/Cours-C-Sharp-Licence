@@ -3,7 +3,7 @@
 public class Enemys
 {
     public long Id { get; set; }
-    public string EnemysArms { get; set; } = string.Empty;
+    public long IdArms { get; set; }
     public string name { get; set; } = string.Empty;
 
     public long force { get; set; }
