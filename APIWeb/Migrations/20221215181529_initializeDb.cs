@@ -24,8 +24,8 @@ namespace APIWeb.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     EnemysNameArms = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    bonusForce = table.Column<long>(type: "bigint", nullable: false),
-                    bonusSagesse = table.Column<long>(type: "bigint", nullable: false),
+                    bonusStrength = table.Column<long>(type: "bigint", nullable: false),
+                    bonusWisdom = table.Column<long>(type: "bigint", nullable: false),
                     bonusVitality = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
@@ -40,11 +40,11 @@ namespace APIWeb.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IdArms = table.Column<long>(type: "bigint", nullable: false),
+                    IdWeapon = table.Column<long>(type: "bigint", nullable: false),
                     name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    force = table.Column<long>(type: "bigint", nullable: false),
-                    sagesse = table.Column<long>(type: "bigint", nullable: false),
+                    strength = table.Column<long>(type: "bigint", nullable: false),
+                    wisdom = table.Column<long>(type: "bigint", nullable: false),
                     vitality = table.Column<long>(type: "bigint", nullable: false),
                     classePlayer = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
@@ -61,11 +61,11 @@ namespace APIWeb.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IdArms = table.Column<long>(type: "bigint", nullable: false),
+                    IdWeapon = table.Column<long>(type: "bigint", nullable: false),
                     name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    force = table.Column<long>(type: "bigint", nullable: false),
-                    sagesse = table.Column<long>(type: "bigint", nullable: false),
+                    strength = table.Column<long>(type: "bigint", nullable: false),
+                    wisdom = table.Column<long>(type: "bigint", nullable: false),
                     vitality = table.Column<long>(type: "bigint", nullable: false),
                     classePlayer = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")

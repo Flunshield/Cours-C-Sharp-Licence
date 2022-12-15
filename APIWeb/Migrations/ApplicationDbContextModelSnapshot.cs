@@ -18,58 +18,30 @@ namespace APIWeb.Migrations
                 .HasAnnotation("ProductVersion", "7.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("APIWeb.Entities.Arms", b =>
+            modelBuilder.Entity("APIWeb.Entities.Enemy", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("EnemysNameArms")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("HeroesNameArms")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<long>("bonusForce")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("bonusSagesse")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("bonusVitality")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Arms");
-                });
-
-            modelBuilder.Entity("APIWeb.Entities.Enemys", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("IdArms")
+                    b.Property<long>("IdWeapon")
                         .HasColumnType("bigint");
 
                     b.Property<string>("classePlayer")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<long>("force")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<long>("sagesse")
+                    b.Property<long>("strength")
                         .HasColumnType("bigint");
 
                     b.Property<long>("vitality")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("wisdom")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
@@ -83,29 +55,57 @@ namespace APIWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<long>("IdArms")
+                    b.Property<long>("IdWeapon")
                         .HasColumnType("bigint");
 
                     b.Property<string>("classePlayer")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<long>("force")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<long>("sagesse")
+                    b.Property<long>("strength")
                         .HasColumnType("bigint");
 
                     b.Property<long>("vitality")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("wisdom")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.ToTable("Heroes");
+                });
+
+            modelBuilder.Entity("APIWeb.Entities.Weapon", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("EnemysNameArms")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("HeroesNameArms")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<long>("bonusStrength")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("bonusVitality")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("bonusWisdom")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Arms");
                 });
 #pragma warning restore 612, 618
         }

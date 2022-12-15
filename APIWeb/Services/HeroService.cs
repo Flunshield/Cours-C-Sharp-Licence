@@ -1,14 +1,15 @@
-﻿using APIWeb.Entities;
+﻿using APIWeb.Context;
+using APIWeb.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace APIWeb.Services
 {
-    public class EnemysService
+    public class HeroService
     {
-        public EnemysService() { }
-        public EnemysService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, long armsPlayerGenerate)
+        public HeroService() { }
+        public HeroService(string namePlayerGenerate, long forcePlayer, long sagessePlayer, long vitalityPlayer, string classePlayerGenerate, long armsPlayerGenerate)
         {
             this.namePlayerGenerate = namePlayerGenerate;
             this.forcePlayer = forcePlayer;
@@ -23,14 +24,15 @@ namespace APIWeb.Services
         public long vitalityPlayer { get; set; }
         public string classePlayerGenerate { get; set; } = string.Empty;
         public long armsPlayerGenerate { get; set; }
-        internal EnemysService AddEnemys()
+        internal HeroService AddHeroes()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             var random = new Random();
-            var nameSize = new char[random.Next(3,9)];
-            string[] classePlayer = { "Beserker", "Wizard", "Assassin" };
+            var nameSize = new char[random.Next(3, 9)];
+            string[] classePlayer = { "Warrior", "Mage", "Thief" };
             int classePlayerGenerateNumber = random.Next(classePlayer.Length);
             long armsPlayerGenerate = 999;
+
             for (int i = 0; i < nameSize.Length; i++)
             {
                 nameSize[i] = characters[random.Next(characters.Length)];
@@ -52,8 +54,8 @@ namespace APIWeb.Services
             {
                 armsPlayerGenerate = 3;
             }
-            EnemysService enemys = new EnemysService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
-            return enemys;
+            HeroService heroes = new HeroService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
+            return heroes;
         }
     }
 }

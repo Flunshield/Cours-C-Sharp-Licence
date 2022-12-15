@@ -18,7 +18,7 @@ public class EnemysController : ControllerBase
     //GetAllEnemys() allows you to consult all enemys stored in the database.
     [HttpGet]
     [Route("/getAllEnemys")]
-    public async Task<ActionResult<List<Enemys>>> GetAllEnemys()
+    public async Task<ActionResult<List<Enemy>>> GetAllEnemys()
     {
         return Ok(await _context.Enemys.ToListAsync());
     }
@@ -26,9 +26,9 @@ public class EnemysController : ControllerBase
     //GetEnemys(string name) Allows you to view the selected enemy whit name stored in the database.
     [HttpGet]
     [Route("/getEnemy/{name}")]
-    public async Task<ActionResult<List<Enemys>>> GetEnemys(string name)
+    public async Task<ActionResult<List<Enemy>>> GetEnemys(string name)
     {
-        Enemys? enemysGet = await _context.Enemys.FirstOrDefaultAsync(enemysName => enemysName.name == name);
+        Enemy? enemysGet = await _context.Enemys.FirstOrDefaultAsync(enemysName => enemysName.name == name);
         if (enemysGet == null)
         {
             return NotFound("Enemy not Found");
@@ -39,18 +39,18 @@ public class EnemysController : ControllerBase
     //Allows you to randomly generate an enemy and store it in the base. The enemy is generated from the AddEnemys() method of the request.
     [HttpPost]
     [Route("/addEnemy")]
-    public async Task<ActionResult<List<Enemys>>> PostEnemy()
+    public async Task<ActionResult<List<Enemy>>> PostEnemy()
     {
-        EnemysService addenemys = new EnemysService();
+        EnemyService addenemys = new EnemyService();
         var newEnemys = addenemys.AddEnemys();
-        Enemys addNewEnemys = new Enemys()
+        Enemy addNewEnemys = new Enemy()
         {
             name = newEnemys.namePlayerGenerate,
-            force = newEnemys.forcePlayer,
-            sagesse = newEnemys.sagessePlayer,
+            strength = newEnemys.forcePlayer,
+            wisdom = newEnemys.sagessePlayer,
             vitality = newEnemys.vitalityPlayer,
             classePlayer = newEnemys.classePlayerGenerate,
-            IdArms = newEnemys.armsPlayerGenerate
+            IdWeapon = newEnemys.armsPlayerGenerate
         };
         await _context.Enemys.AddAsync(addNewEnemys);
         await _context.SaveChangesAsync();
@@ -60,51 +60,51 @@ public class EnemysController : ControllerBase
     //EquipWeapon(long id) allows you to modify one or more elements of an hero.
     [HttpPut]
     [Route("/equipWeaponEnemy/{id}")]
-    public async Task<ActionResult<List<Enemys>>> EquipWeapon(long id)
+    public async Task<ActionResult<List<Enemy>>> EquipWeapon(long id)
     {
-        Enemys? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == id);
-        Arms? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == enemy.IdArms);
+        Enemy? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == id);
+        Weapon? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == enemy.IdWeapon);
         if (enemy == null)
         {
             return BadRequest(enemy);
         }
-        enemy.IdArms = enemy.IdArms;
+        enemy.IdWeapon = enemy.IdWeapon;
         enemy.name = enemy.name;
-        enemy.force = enemy.force + checkArm.bonusForce;
+        enemy.strength = enemy.strength + checkArm.bonusStrength;
         enemy.vitality = enemy.vitality + checkArm.bonusVitality;
-        enemy.sagesse = enemy.sagesse + checkArm.bonusSagesse;
+        enemy.wisdom = enemy.wisdom + checkArm.bonusWisdom;
         enemy.classePlayer = enemy.classePlayer;
         await _context.SaveChangesAsync();
-        return Ok("The " + enemy.name + " enemy has been modified !");
+        return Ok("The " + enemy.name + " enemy has been modified ! you win +" + checkArm.bonusStrength + " strong +" + checkArm.bonusVitality + " vitality +" + checkArm.bonusWisdom + " sagesse");
     }
 
     //RemoveWeapon(long id) allows you to modify one or more elements of an hero.
     [HttpPut]
     [Route("/removeWeaponEnemy/{id}")]
-    public async Task<ActionResult<List<Enemys>>> RemoveWeapon(long id)
+    public async Task<ActionResult<List<Enemy>>> RemoveWeapon(long id)
     {
-        Enemys? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == id);
-        Arms? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == enemy.IdArms);
+        Enemy? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == id);
+        Weapon? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == enemy.IdWeapon);
         if (enemy == null)
         {
             return BadRequest(enemy);
         }
-        enemy.IdArms = enemy.IdArms;
+        enemy.IdWeapon = enemy.IdWeapon;
         enemy.name = enemy.name;
-        enemy.force = enemy.force - checkArm.bonusForce;
+        enemy.strength = enemy.strength - checkArm.bonusStrength;
         enemy.vitality = enemy.vitality - checkArm.bonusVitality;
-        enemy.sagesse = enemy.sagesse - checkArm.bonusSagesse;
+        enemy.wisdom = enemy.wisdom - checkArm.bonusWisdom;
         enemy.classePlayer = enemy.classePlayer;
         await _context.SaveChangesAsync();
-        return Ok("The " + enemy.name + " enemy has been modified !");
+        return Ok("The " + enemy.name + " enemy has been modified ! you won -" + checkArm.bonusStrength + " strong -" + checkArm.bonusVitality + " vitality -" + checkArm.bonusWisdom + " sagesse -");
     }
 
     //DeleteEnemy([FromBody] Enemys request) allows you to delete an enemy based on its id
     [HttpDelete]
     [Route("/deleteEnemy")]
-    public async Task<ActionResult<List<Enemys>>> DeleteEnemy([FromBody] Enemys request)
+    public async Task<ActionResult<List<Enemy>>> DeleteEnemy([FromBody] Enemy request)
     {
-        Enemys? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == request.Id);
+        Enemy? enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == request.Id);
         if (enemy == null)
         {
             return BadRequest(request);

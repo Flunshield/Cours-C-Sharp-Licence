@@ -42,16 +42,16 @@ public class HeroController : ControllerBase
     [Route("/addHero")]
     public async Task<ActionResult<List<Hero>>> Post()
     {
-        HeroesService addheros = new HeroesService();
+        HeroService addheros = new HeroService();
         var newHeroes = addheros.AddHeroes();
         Hero addNewHeroes = new Hero()
         {
             name = newHeroes.namePlayerGenerate,
-            force = newHeroes.forcePlayer,
-            sagesse = newHeroes.sagessePlayer,
+            strength = newHeroes.forcePlayer,
+            wisdom = newHeroes.sagessePlayer,
             vitality = newHeroes.vitalityPlayer,
             classePlayer = newHeroes.classePlayerGenerate,
-            IdArms = newHeroes.armsPlayerGenerate
+            IdWeapon = newHeroes.armsPlayerGenerate
         };
         await _context.Heroes.AddAsync(addNewHeroes);
         await _context.SaveChangesAsync();
@@ -68,16 +68,16 @@ public class HeroController : ControllerBase
     public async Task<ActionResult<List<Hero>>> EquipWeapon(long id)
     {
         Hero? hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == id);
-        Arms? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == hero.IdArms);
+        Weapon? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == hero.IdWeapon);
         if (hero == null)
         {
             return BadRequest(hero);
         }
-        hero.IdArms = hero.IdArms;
+        hero.IdWeapon = hero.IdWeapon;
         hero.name = hero.name;
-        hero.force = hero.force + checkArm.bonusForce;
+        hero.strength = hero.strength + checkArm.bonusStrength;
         hero.vitality = hero.vitality + checkArm.bonusVitality;
-        hero.sagesse = hero.sagesse + checkArm.bonusSagesse;
+        hero.wisdom = hero.wisdom + checkArm.bonusWisdom;
         hero.classePlayer = hero.classePlayer;
         await _context.SaveChangesAsync();
         return Ok("The " + hero.name + " hero has been modified !");
@@ -89,16 +89,16 @@ public class HeroController : ControllerBase
     public async Task<ActionResult<List<Hero>>> RemoveWeapon(long id)
     {
         Hero? hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == id);
-        Arms? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == hero.IdArms);
+        Weapon? checkArm = await _context.Arms.FirstOrDefaultAsync(bonusArm => bonusArm.Id == hero.IdWeapon);
         if (hero == null)
         {
             return BadRequest(hero);
         }
-        hero.IdArms = hero.IdArms;
+        hero.IdWeapon = hero.IdWeapon;
         hero.name = hero.name;
-        hero.force = hero.force - checkArm.bonusForce;
+        hero.strength = hero.strength - checkArm.bonusStrength;
         hero.vitality = hero.vitality - checkArm.bonusVitality;
-        hero.sagesse = hero.sagesse - checkArm.bonusSagesse;
+        hero.wisdom = hero.wisdom - checkArm.bonusWisdom;
         hero.classePlayer = hero.classePlayer;
         await _context.SaveChangesAsync();
         return Ok("The " + hero.name + " hero has been modified !");

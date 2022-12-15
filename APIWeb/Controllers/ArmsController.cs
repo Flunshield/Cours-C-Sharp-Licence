@@ -2,7 +2,6 @@
 using APIWeb.Entities;
 using APIWeb.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace APIWeb.Controllers;
 
@@ -17,7 +16,7 @@ public class ArmsController : ControllerBase
     //GetAllWeapon() allows you to consult all the weapons stored in the database.
     [HttpGet]
     [Route("/getAllWeapon")]
-    public async Task<ActionResult<List<Arms>>> GetAllWeapon()
+    public async Task<ActionResult<List<Weapon>>> GetAllWeapon()
     {
         return Ok(await _context.Arms.ToListAsync());
     }
@@ -25,9 +24,9 @@ public class ArmsController : ControllerBase
     //GetWeapon(int id) Allows you to view the selected weapon via its name stored in the database.
     [HttpGet]
     [Route("/getWeapon/{id}")]
-    public async Task<ActionResult<List<Arms>>> GetWeapon(int id)
+    public async Task<ActionResult<List<Weapon>>> GetWeapon(int id)
     {
-        Arms? weaponGet = await _context.Arms.FirstOrDefaultAsync(weaponName => weaponName.Id == id);
+        Weapon? weaponGet = await _context.Arms.FirstOrDefaultAsync(weaponName => weaponName.Id == id);
         if (weaponGet == null)
         {
             return NotFound("Arm not Found");
@@ -38,7 +37,7 @@ public class ArmsController : ControllerBase
     //CreateWeapon([FromBody] Arms weapon) Allows you to create a weapon and store it in the base. The weapon is created from the body of the request.
     [HttpPost]
     [Route("/addWeapon")]
-    public async Task<ActionResult<List<Arms>>> CreateWeapon([FromBody] Arms weapon)
+    public async Task<ActionResult<List<Weapon>>> CreateWeapon([FromBody] Weapon weapon)
     {
         await _context.Arms.AddAsync(weapon);
         await _context.SaveChangesAsync();
@@ -52,17 +51,17 @@ public class ArmsController : ControllerBase
     //UpdateArms([FromBody] Arms request) allows you to modify the characteristics of a weapon
     [HttpPut]
     [Route("/changeWeapon")]
-    public async Task<ActionResult<List<Arms>>> UpdateArms([FromBody] Arms request)
+    public async Task<ActionResult<List<Weapon>>> UpdateArms([FromBody] Weapon request)
     {
-        Arms? weapon = await _context.Arms.FirstOrDefaultAsync(weaponId => weaponId.Id == request.Id);
+        Weapon? weapon = await _context.Arms.FirstOrDefaultAsync(weaponId => weaponId.Id == request.Id);
         if (weapon == null)
         {
             return BadRequest(request);
         }
         weapon.HeroesNameArms = request.HeroesNameArms;
         weapon.EnemysNameArms = request.EnemysNameArms;
-        weapon.bonusForce = request.bonusForce;
-        weapon.bonusSagesse = request.bonusSagesse;
+        weapon.bonusStrength = request.bonusStrength;
+        weapon.bonusWisdom = request.bonusWisdom;
         weapon.bonusVitality = request.bonusVitality;
         await _context.SaveChangesAsync();
         if (weapon == null)
@@ -75,9 +74,9 @@ public class ArmsController : ControllerBase
 
     [HttpDelete]
     [Route("/deleteWeapon")]
-    public async Task<ActionResult<List<Arms>>> DeleteWeapon([FromBody] Arms request)
+    public async Task<ActionResult<List<Weapon>>> DeleteWeapon([FromBody] Weapon request)
     {
-        Arms? weapon = await _context.Arms.FirstOrDefaultAsync(weaponId => weaponId.Id == request.Id);
+        Weapon? weapon = await _context.Arms.FirstOrDefaultAsync(weaponId => weaponId.Id == request.Id);
         if (weapon == null)
         {
             return NotFound("Hero not Found");
