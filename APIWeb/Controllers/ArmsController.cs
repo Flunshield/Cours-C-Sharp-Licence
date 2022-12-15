@@ -41,7 +41,6 @@ public class ArmsController : ControllerBase
     {
         await _context.Arms.AddAsync(weapon);
         await _context.SaveChangesAsync();
-
         return Ok(weapon);
     }
 
@@ -54,13 +53,11 @@ public class ArmsController : ControllerBase
         {
             return BadRequest(request);
         }
-
         weapon.HeroesNameArms = request.HeroesNameArms;
         weapon.EnemysNameArms = request.EnemysNameArms;
         weapon.bonusForce = request.bonusForce;
         weapon.bonusSagesse = request.bonusSagesse;
         weapon.bonusVitality = request.bonusVitality;
-
         await _context.SaveChangesAsync();
         return Ok(weapon);
     }

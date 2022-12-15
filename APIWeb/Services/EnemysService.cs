@@ -23,7 +23,6 @@ namespace APIWeb.Services
         public long vitalityPlayer { get; set; }
         public string classePlayerGenerate { get; set; } = string.Empty;
         public string armsPlayerGenerate { get; set; } = string.Empty;
-
         internal EnemysService AddEnemys()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -33,18 +32,15 @@ namespace APIWeb.Services
             string[] armsPlayer = { "Axe", "Scèptre", "Dagger" };
             int classePlayerGenerateNumber = random.Next(classePlayer.Length);
             string armsPlayerGenerate = "";
-
             for (int i = 0; i < nameSize.Length; i++)
             {
                 nameSize[i] = characters[random.Next(characters.Length)];
             }
-
             string namePlayerGenerate = new string(nameSize);
             long forcePlayer = random.Next(1, 101);
             long sagessePlayer = random.Next(101);
             long vitalityPlayer = random.Next(101);
             string classePlayerGenerate = classePlayer[classePlayerGenerateNumber];
-
             if (classePlayerGenerate == classePlayer[0])
             {
                 armsPlayerGenerate = armsPlayer[0];
@@ -57,7 +53,6 @@ namespace APIWeb.Services
             {
                 armsPlayerGenerate = armsPlayer[2];
             }
-
             EnemysService enemys = new EnemysService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
             return enemys;
         }

@@ -23,7 +23,6 @@ namespace APIWeb.Services
         public long vitalityPlayer { get; set; }
         public string classePlayerGenerate { get; set; } = string.Empty;
         public string armsPlayerGenerate { get; set; } = string.Empty;
-
         internal HeroesService AddHeroes()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -38,7 +37,6 @@ namespace APIWeb.Services
             {
                 nameSize[i] = characters[random.Next(characters.Length)];
             }
-
             string namePlayerGenerate = new string(nameSize);
             long forcePlayer = random.Next(1, 101);
             long sagessePlayer = random.Next(101);
@@ -56,8 +54,6 @@ namespace APIWeb.Services
             {
                 armsPlayerGenerate = armsPlayer[2];
             }
-
-
             HeroesService heroes = new HeroesService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
             return heroes;
         }

@@ -54,7 +54,6 @@ public class EnemysController : ControllerBase
         };
         await _context.Enemys.AddAsync(addNewEnemys);
         await _context.SaveChangesAsync();
-
         return Ok(addNewEnemys);
     }
 
@@ -68,17 +67,14 @@ public class EnemysController : ControllerBase
         {
             return BadRequest(request);
         }
-
         enemy.EnemysArms = request.EnemysArms;
         enemy.name = request.name;
         enemy.force = request.force;
         enemy.vitality = request.vitality;
         enemy.sagesse = request.sagesse;
         enemy.classePlayer = request.classePlayer;
-
         await _context.SaveChangesAsync();
         return Ok(enemy);
     }
-
 }
 

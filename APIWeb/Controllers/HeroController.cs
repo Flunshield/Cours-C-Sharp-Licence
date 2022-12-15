@@ -54,7 +54,6 @@ public class HeroController : ControllerBase
         };
         await _context.Heroes.AddAsync(addNewHeroes);
         await _context.SaveChangesAsync();
-
         return Ok(addNewHeroes);
     }
 
@@ -68,14 +67,12 @@ public class HeroController : ControllerBase
         {
             return BadRequest(request);
         }
-
         hero.HeroesArms = request.HeroesArms;
         hero.name = request.name;
         hero.force = request.force;
         hero.vitality = request.vitality;
         hero.sagesse = request.sagesse;
         hero.classePlayer = request.classePlayer;
-
         await _context.SaveChangesAsync();
         return Ok(hero);
     }
