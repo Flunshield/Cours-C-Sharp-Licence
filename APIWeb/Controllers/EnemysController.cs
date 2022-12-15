@@ -23,9 +23,8 @@ public class EnemysController : ControllerBase
         return Ok(await _context.Enemys.ToListAsync());
     }
 
-    //Put this method as a comment so as not to crash Swagger.
     //GetEnemys(string name) Allows you to view the selected enemy whit name stored in the database.
-    [HttpGet("{name}")]
+    [HttpGet]
     [Route("/getEnemys/{name}")]
     public async Task<ActionResult<List<Enemys>>> GetEnemys(string name)
     {
@@ -54,9 +53,31 @@ public class EnemysController : ControllerBase
             EnemysArms = newEnemys.armsPlayerGenerate
         };
         await _context.Enemys.AddAsync(addNewEnemys);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         return Ok(addNewEnemys);
+    }
+
+    //UpdateEnemy([FromBody] Enemys request) allows you to modify one or more elements of an enemy by its id sent from the body.
+    [HttpPut]
+    [Route("/changeEnemysFeature")]
+    public async Task<ActionResult<List<Enemys>>> UpdateEnemy([FromBody] Enemys request)
+    {
+        Enemys enemy = await _context.Enemys.FirstOrDefaultAsync(enemyId => enemyId.Id == request.Id);
+        if (enemy == null)
+        {
+            return BadRequest(request);
+        }
+
+        enemy.EnemysArms = request.EnemysArms;
+        enemy.name = request.name;
+        enemy.force = request.force;
+        enemy.vitality = request.vitality;
+        enemy.sagesse = request.sagesse;
+        enemy.classePlayer = request.classePlayer;
+
+        await _context.SaveChangesAsync();
+        return Ok(enemy);
     }
 
 }

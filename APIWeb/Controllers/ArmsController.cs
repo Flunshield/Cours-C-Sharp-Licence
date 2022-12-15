@@ -13,38 +13,55 @@ public class ArmsController : ControllerBase
         _context = dbContext;
     }
 
-    //GetAllArms() allows you to consult all the weapons stored in the database.
+    //GetAllWeapon() allows you to consult all the weapons stored in the database.
     [HttpGet]
-    [Route("/getAllArms")]
-    public async Task<ActionResult<List<Arms>>> GetAllArms()
+    [Route("/getAllWeapon")]
+    public async Task<ActionResult<List<Arms>>> GetAllWeapon()
     {
         return Ok(await _context.Arms.ToListAsync());
     }
 
-    //Put this method as a comment so as not to crash Swagger.
-    //GetArm(int id) Allows you to view the selected weapon via its name stored in the database.
-    [HttpGet("{id}")]
-    [Route("/getArms/{id}")]
-    public async Task<ActionResult<List<Arms>>> GetArm(int id)
+    //GetWeapon(int id) Allows you to view the selected weapon via its name stored in the database.
+    [HttpGet]
+    [Route("/getWeapon/{id}")]
+    public async Task<ActionResult<List<Arms>>> GetWeapon(int id)
     {
-        Arms armsGet = await _context.Arms.FirstOrDefaultAsync(armsName => armsName.Id == id);
-        if (armsGet == null)
+        Arms weaponGet = await _context.Arms.FirstOrDefaultAsync(weaponName => weaponName.Id == id);
+        if (weaponGet == null)
         {
             return NotFound("Arm not Found");
         }
-        return Ok(armsGet);
+        return Ok(weaponGet);
     }
 
-    //CreateArms([FromBody] Arms arms) Allows you to create a weapon and store it in the base. The weapon is created from the body of the request.
+    //CreateWeapon([FromBody] Arms weapon) Allows you to create a weapon and store it in the base. The weapon is created from the body of the request.
     [HttpPost]
-    [Route("/addArms")]
-    public async Task<ActionResult<List<Arms>>> CreateArms([FromBody] Arms arms)
+    [Route("/addWeapon")]
+    public async Task<ActionResult<List<Arms>>> CreateWeapon([FromBody] Arms weapon)
     {
-        await _context.Arms.AddAsync(arms);
-        _context.SaveChanges();
+        await _context.Arms.AddAsync(weapon);
+        await _context.SaveChangesAsync();
 
-        return Ok(arms);
+        return Ok(weapon);
+    }
+
+    [HttpPut]
+    [Route("/changeWeapon")]
+    public async Task<ActionResult<List<Arms>>> UpdateArms([FromBody] Arms request)
+    {
+        Arms weapon = await _context.Arms.FirstOrDefaultAsync(weaponId => weaponId.Id == request.Id);
+        if (weapon == null)
+        {
+            return BadRequest(request);
+        }
+
+        weapon.HeroesNameArms = request.HeroesNameArms;
+        weapon.EnemysNameArms = request.EnemysNameArms;
+        weapon.bonusForce = request.bonusForce;
+        weapon.bonusSagesse = request.bonusSagesse;
+        weapon.bonusVitality = request.bonusVitality;
+
+        await _context.SaveChangesAsync();
+        return Ok(weapon);
     }
 }
-
-

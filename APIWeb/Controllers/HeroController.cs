@@ -23,9 +23,8 @@ public class HeroController : ControllerBase
         return  Ok(await _context.Heroes.ToListAsync());
     }
 
-    //Put this method as a comment so as not to crash Swagger.
     //GetHero(string name)) Allows you to view the selected hero whit name stored in the database.
-    [HttpGet("{name}")]
+    [HttpGet]
     [Route("/getHeroes/{name}")]
     public async Task<ActionResult<List<Hero>>> GetHero(string name)
     {
@@ -54,9 +53,31 @@ public class HeroController : ControllerBase
             HeroesArms = newHeroes.armsPlayerGenerate
         };
         await _context.Heroes.AddAsync(addNewHeroes);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         return Ok(addNewHeroes);
+    }
+
+    //UpdateHero([FromBody] Enemys request) allows you to modify one or more elements of an hero by its id sent from the body.
+    [HttpPut]
+    [Route("/changeHeroFeature")]
+    public async Task<ActionResult<List<Hero>>> UpdateHero([FromBody] Hero request)
+    {
+        Hero hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == request.Id);
+        if (hero == null)
+        {
+            return BadRequest(request);
+        }
+
+        hero.HeroesArms = request.HeroesArms;
+        hero.name = request.name;
+        hero.force = request.force;
+        hero.vitality = request.vitality;
+        hero.sagesse = request.sagesse;
+        hero.classePlayer = request.classePlayer;
+
+        await _context.SaveChangesAsync();
+        return Ok(hero);
     }
 
 }
