@@ -3,6 +3,7 @@ using APIWeb.Entities;
 using APIWeb.Context;
 using Microsoft.EntityFrameworkCore;
 using APIWeb.Services;
+
 namespace APIWeb.Controllers;
 
 [ApiController]
@@ -31,7 +32,7 @@ public class HeroController : ControllerBase
         Hero heroGet = await _context.Heroes.FirstOrDefaultAsync(heroName => heroName.name == name);
         if (heroGet == null)
         {
-            return NotFound("Enemy not Found");
+            return NotFound("Hero not Found");
         }
         return Ok(heroGet);
     }
@@ -76,6 +77,41 @@ public class HeroController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok(hero);
     }
+
+    // Ne fonctionne pas
+    //[HttpPut]
+    //[Route("/changeHeroFeature/{id}")]
+    //public async Task<ActionResult<List<Hero>>> EquipWeapon(int id)
+    //{
+    //    Hero hero = await _context.Heroes.FirstOrDefaultAsync(heroId => heroId.Id == id);
+    //    ArmsController checkArm = new ArmsController();
+
+    //    int IdWeapon = 0;
+        
+    //    switch (hero.HeroesArms)
+    //    {
+    //        case "Sword":
+    //            IdWeapon = 1;
+    //            break;
+
+    //        case "Scèptre":
+    //            IdWeapon = 2;
+    //            break;
+
+    //        case "Dagger":
+    //            IdWeapon = 3;
+    //            break;
+    //    }
+
+    //    ArmsController weapon = checkArm.GetWeapon(IdWeapon);
+    //    if (hero == null)
+    //    {
+    //        return BadRequest("Hero not Found");
+    //    }
+
+    //    HeroesService newFeature = HeroesService.AddFeatureWeaponHeroes(hero, weapon);
+    //    return Ok(hero);
+    //}
 
 }
 

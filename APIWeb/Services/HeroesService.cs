@@ -1,5 +1,4 @@
 ﻿using APIWeb.Entities;
-using APIWeb.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,7 +27,7 @@ namespace APIWeb.Services
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             var random = new Random();
-            var nameSize = new char[random.Next(3,9)];
+            var nameSize = new char[random.Next(3, 9)];
             string[] classePlayer = { "Warrior", "Mage", "Thief" };
             string[] armsPlayer = { "Sword", "Scèptre", "Dagger" };
             int classePlayerGenerateNumber = random.Next(classePlayer.Length);
@@ -58,5 +57,11 @@ namespace APIWeb.Services
             HeroesService heroes = new HeroesService(namePlayerGenerate, forcePlayer, sagessePlayer, vitalityPlayer, classePlayerGenerate, armsPlayerGenerate);
             return heroes;
         }
+
+        //Ne fonctionne pas
+        //internal HeroesService AddFeatureWeaponHeroes(Hero hero, ArmsController checkArm)
+        //{
+
+        //    return null;
     }
 }

@@ -8,10 +8,6 @@ namespace APIWeb.Controllers;
 public class ArmsController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
-
-    public ArmsController()
-    {
-    }
     public ArmsController(ApplicationDbContext dbContext)
     {
         _context = dbContext;

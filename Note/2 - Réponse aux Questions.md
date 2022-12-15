@@ -1,5 +1,5 @@
 
-## Question 1
+## Question 1 : Pourquoi b affiche 44 ?
 
 
 ```C#
@@ -22,7 +22,7 @@ byte b = (byte)s;
 Console.WriteLine(b); // Affiche 1 car 100000001 b ne pouvant affiche que les 8 premier bits alors la console affichera "1"
 ```
 
-## Question 2
+## Question 2 : Décrire le fonctionnement des enums en C#
 
 ```C#
 // Décrire le fonctionnement des enums en C#
@@ -46,8 +46,7 @@ Un **Enum** , est un nom qui définit un ensemble de valeurs. Les Enum sont co
 
 Dans l'exemple, nous pouvons voir que la variable **Weekend** de type **LesJoursDeLaSemaine** prend comme valeur **Samedi** et **Dimanche** de l'enum **LesJoursDeLaSemaine**.
 
-## Question 3
-Expliquer la différence entre :
+## Question 3 : Expliquer la différence entre :
 ```C#
 int[,] a = new int[1,2];
 int[,,] b = new int[1,2,3];
@@ -57,20 +56,18 @@ La différence entre nos deux tableaux sont :
 - a est un tableau à deux dimensions.
 - b un tableau à trois dimensions.
 
-## Question 4 :
-Que signifie le terme "assembly" (assemblage) ?
+## Question 4 : Que signifie le terme "assembly" (assemblage) ?
 
 Assemblies are the fundamental units of deployment, version control, reuse, activation scoping, and security permissions for .NET-based applications. An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality. Assemblies take the form of executable (_.exe_) or dynamic link library (_.dll_) files, and are the building blocks of .NET applications. They provide the common language runtime with the information it needs to be aware of type implementations.
 
 Source : [learn.microsoft](https://learn.microsoft.com/en-us/dotnet/standard/assembly/)
 
-## Question 5
-Citez un exemple reel d'un usage pertinent du mot clef **Private**.
+## Question 5 : Citez un exemple reel d'un usage pertinent du mot clef **Private**.
 
 Nous devons utiliser le mot-clef **Private** dans le cas où notre classe pourrait interagir avec une base de donnée. Cela permettra d'éviter d'utiliser la classe à l'extérieur de son périmètre.
 
 Exemple de classe : Une classe qui gère l'ajout et le retrait d'argent sur nos comptes.
 
-## Question 6 : Qu'est-ce q'un ORM ?
+## Question 6 : Qu'est-ce qu'un ORM ?
 Un ORM signifie que nous allons traduire de l'Objet en Relationnel et du Relationnel en objet. 
 Si nous souhaitons ajouter des données dans une table, nous allons lui affecter directement via une entity des valeurs.
