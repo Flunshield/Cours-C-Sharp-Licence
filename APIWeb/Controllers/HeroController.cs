@@ -3,6 +3,7 @@ using APIWeb.Entities;
 using APIWeb.Context;
 using Microsoft.EntityFrameworkCore;
 using APIWeb.Services;
+using Microsoft.AspNetCore.Cors;
 
 namespace APIWeb.Controllers;
 
