@@ -41,3 +41,9 @@ C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\obj\Debug\net7.0\refint\APIWeb.dl
 C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\obj\Debug\net7.0\APIWeb.pdb
 C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\obj\Debug\net7.0\APIWeb.genruntimeconfig.cache
 C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\obj\Debug\net7.0\ref\APIWeb.dll
+C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\bin\Debug\net7.0\System.Web.Cors.dll
+C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\bin\Debug\net7.0\System.Net.Http.Formatting.dll
+C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\bin\Debug\net7.0\System.Web.Http.dll
+C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\bin\Debug\net7.0\System.Web.Http.Cors.dll
+C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\pigge\Documents\ISITECH\CSharp\APIWeb\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

@@ -2,10 +2,12 @@ using APIWeb.Context;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseMySql(
@@ -15,11 +17,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(
+    options.AddPolicy(MyAllowSpecificOrigins,
                       policy =>
                       {
                           policy.WithOrigins("http://localhost:3000")
-                          .WithMethods("PUT", "DELETE", "GET", "POST");
+                          .AllowAnyHeader()
+                          .AllowAnyOrigin()
+                          .AllowAnyMethod();
                       });
 });
 
@@ -38,8 +42,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseRouting();
-app.UseCors();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
